@@ -267,12 +267,22 @@
 
     <!-- 입력받은 성적값을 단항연산자로 형변환해보자 !!! -->
     <script>
+      // +단항연산자로 형변환을 하는법!
+      console.log("+''", +'');      //0
+      console.log("+null", +null);  //0
+      console.log("+false", +false);//0
+      console.log("+true", +true);  //1
+      console.log("+undefined", +undefined); //NaN
+      console.log("+[]", +[]);      //0
+
+
       name = prompt("이름을 입력하세요");
       let sci = prompt("과학점수를 입력하세요");
       let phy = prompt("체육점수를 입력하세요");
       let art = prompt("미술점수를 입력하세요");
 
-      // 숫자가 아닌값을 숫자형으로 묵시적으로 형변환하는 방법은
+      // 숫자가 아닌값을 숫자형으로 묵시적으로
+      // 형변환하는 방법으로
       // + 단항 연산자를 사용
       let tot = +sci + +phy + +art;
       let avg = parseInt(tot / 3);
