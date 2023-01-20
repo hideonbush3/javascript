@@ -28,6 +28,31 @@
     console.log(`+---+---+---+---+         (___|___)      -----`);
 
     console.log(a);
+
+    // 2.
+    let so = 3000;
+    let chi = 12000;
+    let order1 = prompt('소주몇병?');
+    let order2 = prompt('치킨몇마리?');
+    let pay = prompt('받은금액')
+    let tot = so*order1 + chi*order2;
+    let boo = tot * 0.1;
+
+    console.log(`[ 음식나라 ]`);
+    console.log(`---------------------`);
+    console.log(`소주     ${order1}      ${so*order1}`);
+    console.log(`너나치킨 ${order2}      ${chi*order2}`);
+    console.log(`---------------------`);
+    console.log(`과세합계        ${tot-boo}`)
+    console.log(`부가세          ${boo}`)
+    console.log(`---------------------`);
+    console.log(`총합계          ${tot}`);
+    console.log(`받은금액        ${pay}`)
+    console.log(`잔돈            ${pay-tot}`)
+    console.log(`---------------------`);
+    console.log(`2014. 07. 07 14:35:24`);
+
+
 </script>
 </body>
 </html>
