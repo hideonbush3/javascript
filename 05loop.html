@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <h1>자바스크립트 반복문</h1>
+    <hr />
+    <h2>개요</h2>
+    <p>조건을 만족하는 동안 코드를 반복적으로 수행하는 문장</p>
+    <p>
+      자바스크립트에서는 기본적으로 3가지 반복문(for, while, do-while)이
+      지원되고, 그외 for-loop, for-in과 ES6에서 추가된 for-of등이 있음
+    </p>
+    <hr />
+
+    <h2>for</h2>
+    <p>조건식이 거짓으로 판별될때까지 코드블록을 반복적으로 실행</p>
+    <p>
+      for(초기화식; 조건식; 증감식) {<br />
+      실행문<br />
+      }
+    </p>
+    <script>
+      for (let i = 0; i < 4; i++) {
+        document.write(`hello<br>`);
+      }
+    </script>
+    <br />
+    <script>
+      // 1 ~ 100까지의 정수 중 짝수 출력
+      let result = "";
+      for (i = 1; i < 101; i++) {
+        if (i % 2 == 0) {
+          result += i + " ";
+        }
+      }
+      document.write(result, "<br>");
+    </script>
+    <br />
+    <script>
+      // 1 ~ 100까지의 정수 중 짝수 출력 v2
+      result = "";
+      for (i = 2; i < 101; i += 2) {
+        result += i + " ";
+      }
+      document.write(result, "<br>");
+    </script>
+    <br />
+    <script>
+      // 1 ~ 100까지의 정수의 총합 출력
+      result = 0;
+      for (i = 1; i <= 100; i++) {
+        result += i;
+      }
+      document.write(result);
+    </script>
+    <br />
+    <script>
+      // 1 ~ 100까지의 정수의 총합 출력 v2 - 가우스 덧셈
+      let limit = 100;
+      result = (1 + limit) * (limit / 2);
+      document.write(result);
+    </script>
+  </body>
+</html>
