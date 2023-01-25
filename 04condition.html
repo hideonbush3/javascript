@@ -21,13 +21,13 @@
 
     <script>
       {
-        document.write(`<b>hello, code block!</b><br>`);
+        document.write(`<b>hello, code block!</b>`);
       } // 코드블록
     </script>
+    <hr />
 
     <h2>if문</h2>
-    <hr />
-    <p>조건을 만족할때만 지정한 코드블록을 실행함</p>
+    <p>조건을 만족할때만 코드블록을 실행함</p>
     <p>if (조건식) {실행할 코드}</p>
     <script>
       // 평균 점수가 60점 이상이면 '시험 합격'을 출력
@@ -42,10 +42,10 @@
       // 짝수, 홀수 여부 출력
       let num = 10;
       if (num % 2 == 0) {
-        document.write(`${num}, 짝수네`);
+        document.write(`${num}은(는) 짝수예요`);
       }
       if (num % 2 != 0) {
-        document.write(`${num}, 홀수네`);
+        document.write(`${num}은(는) 홀수예요`);
       }
     </script>
     <br />
@@ -53,31 +53,31 @@
       // 오전, 오후 구분하여 출력
       let time = `09:53:12`;
       if (Number(time[0] + time[1]) >= 12) {
-        document.write(`현재 시간은 ${time}이고 오후이네요}`);
+        document.write(`현재 시간은 오후 ${time}`);
       }
       if (Number(time[0] + time[1]) < 12) {
-        document.write(`현재 시간은 ${time}이고 오전이네요`);
+        document.write(`현재 시간은 오전 ${time}`);
       }
     </script>
     <hr />
 
     <h2>if else 문</h2>
     <p>
-      조건을 만족하면 if 아래의 코드블록을 실행하고, 만족하지 않을 경우 else
-      아래의 코드블록을 실행
+      조건이 참이면 if의 코드블록을 실행하고
+      거짓이면 else의 코드블록을 실행
     </p>
     <p>
-      if (조건식) {참 일때 실행할 코드}<br />
-      else {거짓일때 실행할 코드}
+      if (조건식) {조건식이 참 일때 실행할 코드}<br />
+      else {조건식이 거짓일때 실행할 코드}
     </p>
     <script>
       // 평균 점수가 60점 이상이면 '시험 합격'을 출력
       avg = 52;
 
       if (avg >= 60) {
-        document.write(`${avg}점 시험 합격...ㅠ`);
+        document.write(`${avg}점 시험 합격~`);
       } else {
-        document.write(`${avg}점 불합격 ㅊㅋㅊㅋ ㅋㅋㅋㅋ`);
+        document.write(`${avg}점 시험 불합격~`);
       }
     </script>
     <br />
@@ -85,9 +85,9 @@
       // 짝수, 홀수 여부 출력 ver 2.0
       num = 5;
       if (num % 2 == 0) {
-        document.write(`${num}, 짝수네`);
+        document.write(`${num}은(는) 짝수`);
       } else {
-        document.write(`${num}, 홀수네`);
+        document.write(`${num}은(는) 홀수`);
       }
     </script>
     <br />
@@ -95,15 +95,15 @@
       // 오전, 오후 구분하여 출력 ver 2.0
       time = `15:53:12`;
       if (Number(time[0] + time[1]) >= 12) {
-        document.write(`현재 시간은 ${time}이고 오후이네요`);
+        document.write(`현재 시간은 오후 ${time} 입니다.`);
       } else {
-        document.write(`현재 시간은 ${time}이고 오전이네요`);
+        document.write(`현재 시간은 오전 ${time} 입니다.`);
       }
     </script>
     <br />
     <script>
       // 윤년여부를 출력
-      // 조건: 4로 나눴을때 나머지가 0인 연도는 윤년
+      // 조건: 4로 나누어 떨어지는 해는 윤년
       // 하지만, 연도가 100으로 나누어 떨어지는 해는 평년
       let year = 2000;
       if (year % 4 == 0 && year % 100 != 0) {
@@ -114,12 +114,13 @@
     </script>
     <br />
     <script>
+      // 로그인 v1
       let id = "admin";
       let pwd = "123456";
-      let chid = "123";
-      let chpwd = "987";
+      let checkid = "123";
+      let checkpwd = "987";
 
-      if (chid == id && chpwd == pwd) {
+      if (checkid == id && checkpwd == pwd) {
         document.write(`회원 인증에 성공했습니다.`);
       } else {
         document.write(`회원 인증에 실패했습니다.`);
@@ -127,15 +128,16 @@
     </script>
     <br />
     <script>
+      // 로그인 v2 - else문을 생략가능
       id = "admin";
       pwd = "123456";
-      chid = "987";
-      chpwd = "123";
+      checkid = "987";
+      checkpwd = "123";
 
       // 로그인 실패 시(디폴트 값)
       let result = `회원 인증에 실패했습니다.`;
       // 로그인 성공 (result의 할당값이 바뀜)
-      if (chid == id && chpwd == pwd) {
+      if (checkid == id && checkpwd == pwd) {
         result = `회원 인증에 성공했습니다.`;
       }
       // 출력
@@ -147,10 +149,11 @@
     <p>코드의 가독성 떨어지므로 사용 자제</p>
     <script>
       // 윤년여부를 출력
-      // 조건1 : 4로 나눴을때 나머지가 0인 연도는 윤년
+      // 조건1 : 4로 나누어 떨어지는 해는 윤년
       // 조건2 : 연도가 100으로 나누어 떨어지는 해는 평년
-      // 조건3 : 근데! 그중에서 뇌절로 400으로 나누어 떨어지는 해는 윤년
-      year = 1600;
+      // 조건3 : 근데! 그중에서 또! 뇌절로 400으로 나누어 떨어지는 해는 윤년
+      // if문속에 if문 또 그 속에 if문이 하나 더 있어야 겠지요?
+      year = 2000;
 
       if (year % 4 == 0) {
         if (year % 100 == 0) {
@@ -166,7 +169,7 @@
         result = "평년";
       }
 
-      document.write(year + "년은" + " " + result);
+      document.write(year + "년은" + " " + result + "입니다.");
     </script>
     <hr />
 
@@ -180,7 +183,7 @@
       // 평균점수에 따라 수우미양가로 성적출력
       avg = 50;
       let grade;
-      result = `가`;
+      result = `가`; // 디폴트 값 할당해서 else문 하나 줄임
       if (avg >= 90) {
         result = "수";
       } else if (avg >= 80) {
@@ -190,7 +193,7 @@
       } else if (avg >= 60) {
         result = "양";
       }
-      document.write(`당신의 평균점수는 ${avg}이고 등급은 ${result} 입니다.`);
+      document.write(`당신의 평균점수는 ${avg}점이고 등급은 ${result} 입니다.`);
     </script>
     <br />
     <script>
@@ -200,8 +203,8 @@
       // 청소년 (14~19) : 720원
       // 일반 (20~) : 1200원
       // 노인 (70~) : 0원
-      let age = 50;
-      result = 0;
+      let age = 7;
+      result = 0; // 디폴트 값
       if (age >= 70) {
         result = 0;
       } else if (age >= 20) {
