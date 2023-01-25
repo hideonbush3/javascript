@@ -157,10 +157,10 @@
       // truthy 결과가 나오는 순간 뒤의 연산은 생략하고 출력함
       // 뒤의 결과는 안봐도 비디오이기 때문
       // - 단축평가(short circuit evaluation)
-      document.write("true || false : ", 1 || 0, "<br>");
-      document.write("null || true : ", null || 1, "<br>");
+      document.write("true || false : ", true || false, "<br>");
+      document.write("null || true : ", null || true, "<br>");
       document.write("null || false : ", null || false, "<br>");
-      document.write("undefined || true : ", undefined || 1, "<br>");
+      document.write("undefined || true : ", undefined || true, "<br>");
       document.write("undefined || false : ", undefined || false, "<br>");
 
       // AND
@@ -170,9 +170,11 @@
       // falsy 결과가 나오는 순간 뒤의 연산은 생략하고 출력함
       // 뒤의 결과는 안봐도 비디오이기 때문
       // - 단축평가(short circuit evaluation)
-      document.write("true && false : ", 1 && 0, "<br>");
-      document.write("null && true : ", null && 1, "<br>");
-      document.write("undefined && true : ", undefined && 1, "<br>");
+      document.write("true && false : ", true && false, "<br>");
+      document.write("null && true : ", null && true, "<br>");
+      document.write("null && false : ", null && false, "<br>");
+      document.write("undefined && true : ", undefined && true, "<br>");
+      document.write("undefined && false : ", undefined && false, "<br>");
       document.write(
         "null && 1 && undefined : ",
         null && 1 && undefined,

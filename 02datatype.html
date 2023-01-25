@@ -21,12 +21,12 @@
     var x = 10;
     var y = 2;
 
-    document.write("x + y = ", x + y, "<br>");
+    document.write("10 + 2 = ", x + y, "<br>");
 
-    var z; //변수 초기화 없이 출력하면
+    //변수 초기화 없이 출력하면
     //undefined 출력
+    var z;
     document.write("z = ", z, "<br>");
-
     let a;
     document.write("a = ", a, "<br>");
 
@@ -34,9 +34,13 @@
     //문제 없이 출력됨
     document.write("z = ", z, "<br>");
 
-    /*      let a = 10; //위에서 선언한 let타입 변수를 다시 재선언함
-                        // 오류발생
+    /* let a = 10; //위에서 선언한 let타입 변수를 다시 재선언함
+                   // 오류발생
     document.write("a = ", a, "<br>");*/
+
+    // 이건 됨
+    // a = 10;
+    // document.write('a = ', a, '<br>' );
   </script>
   <hr />
 
@@ -71,7 +75,7 @@
       "반지름이 5인 원의 둘레는",
       "<br>",
       "3.14 x 5^2 = ",
-      r * r * y,
+      y * r * r,
       "<br>"
     );
 
@@ -84,11 +88,11 @@
     y = "Hello";
     document.write(" Hello / 0 = ", y / 0, "<br>");
 
-    y = 12345678901234567890123456789012345678901234567890123456789012345678901234567890;
+    y = 1234567890123456789012345678901234567890123456789012345678901234567890;
     document.write("완전큰숫자 = ", y, "<br>"); //지수표기로 생략해서 출력됨
 
     y = BigInt(
-      "1234567890123456789012345678901234567890123456789012345678901234567890"
+      `1234567890123456789012345678901234567890123456789012345678901234567890`
     );
     // y = 1234567890123456789012345678901234567890123456789012345678901234567890n;
     document.write("완전큰숫자 = ", y, "<br>"); //그대로 출력됨
@@ -97,7 +101,8 @@
 
   <h2>문자형</h2>
   <p>단일문자나 단일문자가 여러개 모인 문자열을 다룰때 사용</p>
-  <p>문자열을 정의할때는 '', "", `` 등을 이용함</p>
+  <p>문자열을 정의할때는 '', ""을 이용함</p>
+  <p>템플릿 리터럴을 정의할때는 ``을 이용함</p>
 
   <script>
     let say1 = "hello";
@@ -109,20 +114,18 @@
     // 연결해서 하나의 문자열로 출력할 수 있음
     document.write(say1 + " " + say2 + " " + say3, "<br>");
 
-    // 백틱(`)을 이용해서 여러줄 문자열도 정의 가능
-    let koreasong = `동해물과\n백두산이\n마르고닳도록`;
-    // 줄바꿈 문자 \n이 작동하지 않음
+    // 백틱(`)을 이용해서 ' '로 공백을 넣지 않고도 공백 그대로 출력가능
+    let koreasong = `동해물과 백두산이 마르고닳도록`;
     document.write(koreasong, "<br>");
 
     koreasong = `동해물과<br>백두산이<br>마르고닳도록`;
     // 줄바꿈 문자로 <br> 사용
     document.write(koreasong, "<br>");
+    document.write(`${koreasong}<br>`); //템플릿 리터럴식
 
-    koreasong = `동해물과
-백두산이
-마르고닳도록`;
-    // 줄바꿈 문자로 <br> 사용
-    alert(koreasong, "<br>");
+    // 줄바꿈 \n은 alert, confirm, textarea의 value에서 사용할 수 있다
+    koreasong = `동해물과\n백두산이\n마르고닳도록`;
+    alert(koreasong);
 
     // 템플릿 리터럴 : 주로 문자열과 변수를 합쳐서 출력시 유용
     a = 10;
@@ -132,20 +135,27 @@
     // 문자열에서 개별문자를 추출해서 어떤 작업을 할 수 있음
     // 문자열 선택 연산자
     say = "hello, world";
-    document.write(`${say[0]}, ${say[1]}, ${say[2]}, <br>`);
+    document.write(`hello의 첫번째 글자는
+${say[0]}이고
+두번째 글자는 ${say[1]}이고 세번째 글자는
+${say[2]} 입니당 <br>`);
 
     // 주민번호에서 성별코드 추출
-    let jumin = "950508-1000000";
+    let jumin = "123456-2000000";
     let gender;
-    document.write(`님의 성별은 ${jumin[7]} 입니다<br>`);
-
-    // gender = document.write(`${jumin[7]}`);
-    // if ( gender == 1){
-    //   document.write('당신은 남자군요!')
-    // }
-    // else{
-    //   document.write('당신은 여자군요!')
-    // }
+    document.write(
+      `당신의 주민번호 뒷자리 첫번째 
+숫자는 ${jumin[7]} 입니다<br>`
+    );
+    // 조건문으로 성별 알아내기
+    gender = jumin[7];
+    if (gender == 1) {
+      document.write(`주민번호 뒷자리 첫번째 숫자가 
+      ${jumin[7]}인 당신은 남자네요`);
+    } else {
+      document.write(`주민번호 뒷자리 첫번째 숫자가 
+      ${jumin[7]}인 당신은 여자네요`);
+    }
   </script>
 
   <hr />
@@ -168,7 +178,8 @@
   <p>null은 존재하지 않는 값, 비어있는 값, 알 수 없는 값을 나타내는데 사용</p>
 
   <script>
-    let name = null; // 변수는 현재 선언되지 않은 상태
+    let name = null; // null 값을 할당함
+    // null은 비어있는 값이면서 비어있지 않은 값임
     document.write(`이름 : ${name}<br>`);
   </script>
   <hr />
@@ -179,7 +190,7 @@
     undefined는 변수는 선언했지만, 값이 할당되지 않은 상태를 나타내는데 사용
   </p>
   <script>
-    name = undefined; //변수는 현재 선언된 상태
+    name = undefined; //아무 값도 할당안함
     document.write(`이름 : ${name}<br>`);
   </script>
   <hr />
@@ -203,13 +214,42 @@
     let tot = kor + eng + math;
     let avg = tot / 3;
 
-    document.write(`<h1>성적처리 v1</h1><br>`);
+    document.write(`<h3>성적처리 v1</h3>`);
     document.write(`이름 : ${name}<br>`);
     document.write(`국어 : ${kor}<br>`);
     document.write(`영어 : ${eng}<br>`);
     document.write(`수학 : ${math}<br>`);
     document.write(
-      `당신의 평균점수는 ${(kor + eng + math) / 3} 입니다 형편없군요.`
+      `${name}씨의 총점은 ${tot}이고
+      평균점은 ${avg} 입니다 형편없군요.`
     );
+
+    // 번외편 window.prompt를 활용한 성적 처리 프로그램 v2
+    name = prompt("이름을 입력하세요");
+    let sci = prompt("과학점수를 입력하세요");
+    let phy = prompt("체육점수를 입력하세요");
+    let art = prompt("미술점수를 입력하세요");
+    let tot = Number(sci) + Number(phy) + Number(art);
+    // prompt로 입력한 값은 문자열로 인식됨
+    // Number로 형변환 시켜야함
+    let avg = parseInt(tot / 3);
+    // 결과값 정수형으로 변환 시키기위해 parseInt
+
+    document.write(`<h3>돌아온~ 성적처리 v2<h3>`);
+    document.write(`이름 = ${name}<br>`);
+    document.write(`과학 = ${sci}<br>`);
+    document.write(`체육 = ${phy}<br>`);
+    document.write(`미술 = ${art}<br>`);
+    document.write(`총점 = ${tot}<br>`);
+    document.write(`평점 = ${avg}<br>`);
+    if (avg>=90){
+      document.write('학점 = A');
+    }
+    else if (avg>=80){
+      document.write('학점 = B');
+    }
+    else{
+      document.write('축하합니다, F학점이예요!');
+    }
   </script>
 </html>
