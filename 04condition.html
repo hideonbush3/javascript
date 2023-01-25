@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자바스크립트 조건문</title>
+  </head>
+  <body>
+    <h1>자바스크립트 조건문</h1>
+    <hr />
+    <h2>개요</h2>
+    <p>특정 조건에 대한 만족여부에 따라 실행할 코드를 결정하는 기능</p>
+    <p>자바스크립트는 2가지의 조건문 제공 - if, switch</p>
+    <hr />
+
+    <h2>코드블록</h2>
+    <p>0개 이상의 명령문을 중괄호로 묶은것</p>
+    <p>
+      블럭은 단독으로 사용할 수 있으나, 일반적으로 제어문이나 함수/객체 선언시
+      주로 사용
+    </p>
+
+    <script>
+      {
+        document.write(`<b>hello, code block!</b><br>`);
+      } // 코드블록
+    </script>
+
+    <h2>if문</h2>
+    <hr />
+    <p>조건을 만족할때만 지정한 코드블록을 실행함</p>
+    <p>if (조건식) {실행할 코드}</p>
+    <script>
+      // 평균 점수가 60점 이상이면 '시험 합격'을 출력
+      let avg = 68.5;
+
+      if (avg >= 60) {
+        document.write(`${avg}점 시험 합격`);
+      }
+    </script>
+    <br />
+    <script>
+      // 짝수, 홀수 여부 출력
+      let num = 10;
+      if (num % 2 == 0) {
+        document.write(`${num}, 짝수네`);
+      }
+      if (num % 2 != 0) {
+        document.write(`${num}, 홀수네`);
+      }
+    </script>
+    <br />
+    <script>
+      // 오전, 오후 구분하여 출력
+      let time = `09:53:12`;
+      if (Number(time[0] + time[1]) >= 12) {
+        document.write(`현재 시간은 ${time}이고 오후이네요}`);
+      }
+      if (Number(time[0] + time[1]) < 12) {
+        document.write(`현재 시간은 ${time}이고 오전이네요`);
+      }
+    </script>
+    <hr />
+
+    <h2>if else 문</h2>
+    <p>
+      조건을 만족하면 if 아래의 코드블록을 실행하고, 만족하지 않을 경우 else
+      아래의 코드블록을 실행
+    </p>
+    <p>
+      if (조건식) {참 일때 실행할 코드}<br />
+      else {거짓일때 실행할 코드}
+    </p>
+    <script>
+      // 평균 점수가 60점 이상이면 '시험 합격'을 출력
+      avg = 52;
+
+      if (avg >= 60) {
+        document.write(`${avg}점 시험 합격...ㅠ`);
+      } else {
+        document.write(`${avg}점 불합격 ㅊㅋㅊㅋ ㅋㅋㅋㅋ`);
+      }
+    </script>
+    <br />
+    <script>
+      // 짝수, 홀수 여부 출력
+      num = 5;
+      if (num % 2 == 0) {
+        document.write(`${num}, 짝수네`);
+      } else {
+        document.write(`${num}, 홀수네`);
+      }
+    </script>
+    <br />
+    <script>
+      // 오전, 오후 구분하여 출력
+      time = `15:53:12`;
+      if (Number(time[0] + time[1]) >= 12) {
+        document.write(`현재 시간은 ${time}이고 오후이네요`);
+      } else {
+        document.write(`현재 시간은 ${time}이고 오전이네요`);
+      }
+    </script>
+    <br />
+    <script>
+      // 윤년여부를 출력
+      // 조건: 4로 나눴을때 나머지가 0인 연도는 윤년
+      // 하지만, 연도가 100으로 나누어 떨어지는 해는 평년
+      let year = 2000;
+      if (year % 4 == 0 && year % 100 != 0) {
+        document.write(`${year}년은 윤년입니다`);
+      } else {
+        document.write(`${year}년은 평년입니다`);
+      }
+    </script>
+    <br />
+    <script>
+      let id = "admin";
+      let pwd = "123456";
+      let chid = "123";
+      let chpwd = "987";
+
+      if (chid == id && chpwd == pwd) {
+        document.write(`회원 인증에 성공했습니다.`);
+      } else {
+        document.write(`회원 인증에 실패했습니다.`);
+      }
+    </script>
+    <br />
+    <script>
+      id = "admin";
+      pwd = "123456";
+      chid = "987";
+      chpwd = "123";
+
+      // 로그인 실패 시(디폴트 값)
+      let result = `회원 인증에 실패했습니다.`;
+      // 로그인 성공 (result의 할당값이 바뀜)
+      if (chid == id && chpwd == pwd) {
+        result = `회원 인증에 성공했습니다.`;
+      }
+      // 출력
+      document.write(result);
+    </script>
+    <hr />
+
+    <h2>중첩 조건문</h2>
+    <p>코드의 가독성 떨어지므로 사용 자제</p>
+    <script>
+      // 윤년여부를 출력
+      // 조건1 : 4로 나눴을때 나머지가 0인 연도는 윤년
+      // 조건2 : 연도가 100으로 나누어 떨어지는 해는 평년
+      // 조건3 : 근데! 그중에서 뇌절로 400으로 나누어 떨어지는 해는 윤년
+      year = 1600;
+
+      if (year % 4 == 0) {
+        if (year % 100 == 0) {
+          if (year % 400 == 0) {
+            result = "윤년";
+          } else {
+            result = "평년";
+          }
+        } else {
+          result = "윤년";
+        }
+      } else {
+        result = "평년";
+      }
+
+      document.write(year + "년은" + " " + result);
+    </script>
+    <hr />
+
+    <h2>다중 조건문</h2>
+    <p>
+      다중 조건에 대한 만족여부에 따라 코드블록을 실행하려면 if ~ else 뒤에 if ~
+      else 문을 더 추가함
+    </p>
+
+    <script>
+      // 평균점수에 따라 수우미양가로 성적출력
+      avg = 50;
+      let grade;
+      result = `가`;
+      if (avg >= 90) {
+        result = "수";
+      } else if (avg >= 80) {
+        result = "우";
+      } else if (avg >= 70) {
+        result = "미";
+      } else if (avg >= 60) {
+        result = "양";
+      }
+      document.write(`당신의 평균점수는 ${avg}이고 등급은 ${result} 입니다.`);
+    </script>
+    <br />
+    <script>
+      // 버스 기본요금 부과하기 - 나이를 입력받음
+      // 미취학 아동 (~7세) : 0원
+      // 어린이 (8~13) : 450원
+      // 청소년 (14~19) : 720원
+      // 일반 (20~) : 1200원
+      // 노인 (70~) : 0원
+      let age = 50;
+      result = 0;
+      if (age >= 70) {
+        result = 0;
+      } else if (age >= 20) {
+        result = 1200;
+      } else if (age >= 14) {
+        result = 720;
+      } else if (age >= 8) {
+        result = 450;
+      }
+      document.write(`${age}살, 버스요금: ${result}원`);
+    </script>
+    <hr>
+
+    <h2>조건식을 거짓으로 취급하는 값들</h2>
+    <p>
+      false, 0, undefined, null, NaN, 빈 문자열등은 조건식에서 참이 아닌
+      거짓으로 취급
+    </p>
+    <script>
+      result = '거짓입니다.<br>';
+      if (false){
+        result = '참입니다.<br>'
+      }
+      document.write(result);
+    </script>
+
+  </body>
+</html>
