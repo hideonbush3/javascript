@@ -63,8 +63,7 @@
 
     <h2>if else 문</h2>
     <p>
-      조건이 참이면 if의 코드블록을 실행하고
-      거짓이면 else의 코드블록을 실행
+      조건이 참이면 if의 코드블록을 실행하고 거짓이면 else의 코드블록을 실행
     </p>
     <p>
       if (조건식) {조건식이 참 일때 실행할 코드}<br />
@@ -220,12 +219,12 @@
 
     <h2>조건식을 거짓으로 취급하는 값들</h2>
     <p>
-      false, 0, undefined, null, NaN, 빈 문자열등은 조건식에서 참이 아닌
-      거짓으로 취급
+      false, 0, undefined, null, NaN, ''등은 조건식에서 참이 아닌 거짓으로 취급
     </p>
+    <p>''은 false이고 ' '은 true임</p>
     <script>
       result = "거짓입니다.<br>";
-      if (false) {
+      if ("") {
         result = "참입니다.<br>";
       }
       document.write(result);
@@ -282,7 +281,7 @@
           result = "오전";
           break;
       }
-      document.write(`현재시각 ${result} ${time} 입니다`);
+      document.write(`현재시간은 ${result} ${time} 입니다`);
     </script>
     <br />
     <script>
@@ -337,6 +336,7 @@
       // 1, 3, 5, 7, 8, 10, 12 - 31일
       // 4, 6, 9, 11 - 30일
       // 2 - 윤년여부에 따라 28(N)일 or 29(Y)일
+
       month = 2;
       isLeapYear = "Y";
       let lastDay = 0;
@@ -365,12 +365,39 @@
           }
           break;
       }
-      document.write(`${month}월은 ${lastDay}일
-       (윤년: ${isLeapYear}) 까지 입니다.`);
+      document.write(`윤년여부 ${isLeapYear}인 연도의
+      ${month}월 마지막 날은 ${lastDay}일이다.`);
     </script>
     <br />
     <script>
       // 평균점수에 따라 수우미양가로 성적결과 출력 ver 2.0
+      avg = 0;
+      switch (parseInt(avg / 10)) {
+        case 10:
+          result = "수";
+        case 9:
+          result = "수";
+          break;
+        case 8:
+          result = "우";
+          break;
+        case 7:
+          result = "미";
+          break;
+        case 6:
+          result = "양";
+          break;
+        default:
+          result = "가";
+          break;
+      }
+      document.write(`평균점수는 ${avg}점이고 성적은 ${result}이다.`);
+    </script>
+    <br />
+    <script>
+      // 평균점수에 따라 수우미양가로 성적결과 출력
+      // case에 상수 대신 비교연산자 쓰는 방식인데
+      // 이렇게 쓸바엔 차라리 if else문이 더 효율적인듯
       avg = 100;
       result = "가";
       switch (true) {
