@@ -101,14 +101,12 @@
       sum = 0;
       nums = [];
       while (true) {
-        let num = parseInt(
-                prompt("정수를 입력하세요\n0을 입력하면 실행중지 ")
-        );
+        let num = parseInt(prompt("정수를 입력하세요\n0을 입력하면 실행중지 "));
         if (num == 0) break;
-        nums.push(num)
+        nums.push(num);
         sum += num;
       }
-      document.write(nums, '/', sum, '<br>');
+      document.write(nums, "/", sum, "<br>");
     </script>
   </body>
 </html>
