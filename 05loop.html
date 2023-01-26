@@ -160,10 +160,29 @@
     <script>
       document.write(`구구단 출력 v4<br>`);
       // 구구단 출력 v4
-      for (dan = 2; dan <= 5; dan++) {
-        document.write(`구구단 ${dan}단<br>`);
-        for (let i = 1; i <= 9; i++) {
-          document.write(`${dan} * ${i} = ${dan * i}<br>`);
+      // for (dan = 2; dan <= 5; dan++) {
+      //   for (let i = 1; i <= 9; i++) {
+      //     document.write(`${dan} * ${i} = ${dan * i}<br>`);
+      //   }
+      //   document.write(`<br>`);
+      // }
+      for (let i = 1; i <= 9; i++) {
+        for (dan = 2; dan <= 5; dan++) {
+          document.write(
+            dan +
+              " " +
+              "X" +
+              " " +
+              i +
+              " " +
+              "=" +
+              " " +
+              " " +
+              dan * i +
+              " " +
+              " " +
+              "\t"
+          );
         }
         document.write(`<br>`);
       }
@@ -185,7 +204,7 @@
           break;
         }
       }
-      document.write(i, " ", sum);
+      document.write(i, "/", sum);
     </script>
     <hr />
     <h2>continue</h2>
@@ -198,6 +217,7 @@
       // 1~1000까지의 총합을 계산
       // 단, 5의 배수나 7의 배수는 계산에서 제외함
       // continue보단 break를 더 많이 씀
+      // 조건식이 맞아서 continue가 실행되면 반복문의 증감식으로 이동함
       sum = 0;
       for (let i = 1; i <= 1000; i++) {
         if (i % 5 == 0 || i % 7 == 0) continue;
