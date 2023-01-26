@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자바스크립트 반복문</title>
+  </head>
+  <body>
+    <h1>자바스크립트 반복문</h1>
+    <hr />
+    <h2>while</h2>
+    <p>조건식이 참일 동안 코드블록을 실행하는 반복문</p>
+    <p>
+      만일, 조건식이 처음부터 거짓이면 코드블록은 한번도 실행되지 않을 수 있음
+    </p>
+    <p>
+      for는 반복 횟수를 처음부터 알고 있을때 실행하는 반복문인 반면, while은
+      반복 횟수를 모르고 실행하는 반복문임
+    </p>
+    <p>하지만, for문과 while문은 서로 변환이 가능</p>
+    <hr />
+
+    <h2>while 구조</h2>
+    <p>초기식</p>
+    <p>while(조건식){</p>
+    <p>실행할 코드</p>
+    <p>증감식</p>
+    <p>}</p>
+
+    <script>
+      // 1 ~ 10까지의 정수 출력 v3
+      let i = 1;
+      while (i <= 10) {
+        document.write(i, " ");
+        i++;
+      }
+    </script>
+    <br />
+    <script>
+      // 1 ~ 100까지의 정수 중 짝수 출력 v2
+      i = 2;
+      while (i <= 100) {
+        if (i % 2 == 0) {
+          document.write(i, " ");
+        }
+        i += 2;
+      }
+    </script>
+    <br />
+    <script>
+      // 1 ~ 100까지의 정수의 총합 출력v2
+      i = 1;
+      let result = 0;
+      while (i <= 100) {
+        result += i;
+        i++;
+      }
+      document.write(result);
+    </script>
+    <br />
+    <script>
+      // 10 ~ 1까지의 정수  v2
+      i = 10;
+      while (i >= 1) {
+        document.write(i, " ");
+        i--;
+      }
+    </script>
+    <br />
+    <script>
+      // 구구단 출력 v5
+      i = 2;
+      while (i <= 9) {
+        j = 1;
+        while (j <= 9) {
+          document.write(`${i} X ${j} = ${i * j}<br>`);
+          j++;
+        }
+        i++;
+        document.write(`<br>`);
+      }
+    </script>
+    <hr />
+
+    <h2>무한 반복문 - while</h2>
+    <p>반복문의 조건식을 true라고 설정하면 해당 반복문을 무한 실행함</p>
+
+    <script>
+      // 임의의 정수를 계속 입력하면
+      // 입력한 정수의 합을 계산함
+      // 단, 0을 입력하면 실행을 중지하고
+      // 지금까지의 총합을 출력
+      // sum = 0;
+      // while (true) {
+      //   let num = parseInt(
+      //     prompt("정수를 입력하세요\n0을 입력하면 실행중지 ")
+      //   );
+      //   if (num == 0) break;
+      //   sum += num;
+      // }
+      // document.write(sum);
+      sum = 0;
+      nums = [];
+      while (true) {
+        let num = parseInt(
+                prompt("정수를 입력하세요\n0을 입력하면 실행중지 ")
+        );
+        if (num == 0) break;
+        nums.push(num)
+        sum += num;
+      }
+      document.write(nums, '/', sum, '<br>');
+    </script>
+  </body>
+</html>
