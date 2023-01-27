@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자바스크립트 콜백 함수</title>
+  </head>
+  <body>
+    <h1>자바스크립트 콜백 함수</h1>
+    <hr />
+    <h2>개요</h2>
+    <p>
+      다른 함수의 인자로 사용되는 함수 또는 어떤 이벤트에 의해 호출되는 함수를
+      의미
+    </p>
+    <p>
+      주로, 프로그램이 실행되는 동안 지속적으로 수행해야 하는 작업이 있을때 사용
+      - 비동기 프로그래밍
+    </p>
+    <p>
+      어떤 정보를 원하는 쪽이 정보를 제공하는 쪽에게 반복적으로 확인(요구)하는
+      것보다 정보를 제공하는 쪽이 정보를 원하는 쪽에게 통보하는 것이 효율적임
+    </p>
+    <p>
+      달걀을 삶을때 적정 시간이 되었는지 확인해야 하거나 친구랑 놀고 있을때 집에
+      가야할 시간을 확인해야 할때 타이머/알람(콜백함수)를 이용하는 것과 동일
+    </p>
+    <p>
+      ES5/ES6에서는 promise나 async/await 등이 추가되어 콜백함수의 사용은 줄이는
+      추세임
+    </p>
+    <script>
+      let showHello10 = (파라미터) => {
+        for (let i = 1; i <= 10; i++) 파라미터();
+      };
+
+      let sayHello = () => document.write(`Hello World<br>`);
+
+      showHello10(sayHello);
+    </script>
+    <hr />
+
+    <h2>타이머 함수</h2>
+    <p>특정 시간이 지난 후에 함수를 실행하려면 setTimeout 함수를 사용</p>
+    <p>특정 시간마다 함수를 실행하려면 setInterval 함수를 사용</p>
+    <script>
+      // sayHello 함수를 호출한 시점부터 5초 후에 호출
+      // 자바스크립트에서 기본 시간 단위는 1ms임
+      let sayHello2 = () => console.log(`Hello after 5s`);
+
+      setTimeout(sayHello2, 5000);
+    </script>
+
+    <script>
+      let sayHello3 = () => console.log(`Hello per 5s`);
+
+      setInterval(sayHello3, 5000);
+    </script>
+
+    <script>
+      // 현재날짜와 시간을 출력하는 함수
+      // 출력 예시) 2023-01-27 금요일 오후 13:15:30
+      // showDateTime
+      let showDateTime = () => {
+        let date = new Date();
+
+        let year = date.getFullYear();
+        let month = ("0" + (date.getMonth() + 1)).slice(-2);
+        let day = ("0" + date.getDate()).slice(-2);
+        let day2 = ("0" + date.getDay()).slice(-2);
+        let dateStr = year + "-" + month + "-" + day + " " + "일";
+        switch (day2) {
+          case 1:
+            dateStr = year + "-" + month + "-" + day + " " + "월";
+          case 2:
+            dateStr = year + "-" + month + "-" + day + " " + "화";
+          case 3:
+            dateStr = year + "-" + month + "-" + day + " " + "수";
+          case 4:
+            dateStr = year + "-" + month + "-" + day + " " + "목";
+          case 5:
+            dateStr = year + "-" + month + "-" + day + " " + "금";
+          case 6:
+            dateStr = year + "-" + month + "-" + day + " " + "토";
+        }
+
+        let hours = ("0" + date.getHours()).slice(-2);
+        let minutes = ("0" + date.getMinutes()).slice(-2);
+        let seconds = ("0" + date.getSeconds()).slice(-2);
+        let timeStr = "오전" + " " + hours + ":" + minutes + ":" + seconds;
+        if (hours >= 12) {
+          let timeStr = "오후" + " " + hours + ":" + minutes + ":" + seconds;
+        }
+        return dateStr + " " + timeStr;
+      };
+
+      result = showDateTime();
+      document.write(result);
+      console.log(result);
+      // 1초마다 현재날짜와 시간을 출력
+      let showDateTime2 = () => {
+        let date = new Date();
+
+        let year = date.getFullYear();
+        let month = ("0" + (date.getMonth() + 1)).slice(-2);
+        let day = ("0" + date.getDate()).slice(-2);
+        let day2 = ("0" + date.getDay()).slice(-2);
+        let dateStr = year + "-" + month + "-" + day + " " + "일";
+        switch (day2) {
+          case 1:
+            dateStr = year + "-" + month + "-" + day + " " + "월";
+          case 2:
+            dateStr = year + "-" + month + "-" + day + " " + "화";
+          case 3:
+            dateStr = year + "-" + month + "-" + day + " " + "수";
+          case 4:
+            dateStr = year + "-" + month + "-" + day + " " + "목";
+          case 5:
+            dateStr = year + "-" + month + "-" + day + " " + "금";
+          case 6:
+            dateStr = year + "-" + month + "-" + day + " " + "토";
+        }
+
+        let hours = ("0" + date.getHours()).slice(-2);
+        let minutes = ("0" + date.getMinutes()).slice(-2);
+        let seconds = ("0" + date.getSeconds()).slice(-2);
+        let timeStr = "오전" + " " + hours + ":" + minutes + ":" + seconds;
+        if (hours >= 12) {
+          let timeStr = "오후" + " " + hours + ":" + minutes + ":" + seconds;
+        }
+        console.log(dateStr + " " + timeStr);
+      };
+      setInterval(showDateTime2, 1000);
+    </script>
+  </body>
+</html>
