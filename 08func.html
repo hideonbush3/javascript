@@ -58,23 +58,16 @@
       // 년도를 입력하면 윤년여부를 계산해서 출력
       // 윤년여부를 계산하는 함수 : computeLeapYear
       function computeLeapYear(year) {
-        let LeapYear = "";
-        if (year % 4 == 0) {
-          if (year % 100 == 0) {
-            if (year % 400 == 0) {
-              LeapYear = "윤년";
-            } else {
-              LeapYear = "평년";
-            }
-          } else {
-            LeapYear = "윤년";
-          }
-        } else {
-          LeapYear = "평년";
+        let result = "평년";
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+          result = "윤년";
         }
-        return `${year}년은 ${LeapYear}입니다.`;
+        return result;
       }
-      document.write(computeLeapYear(1996));
+
+      let year = 2000;
+      let result = computeLeapYear(year); // 함수호출, 결과저장
+      document.write(result);
     </script>
     <br />
     <script>
@@ -82,36 +75,40 @@
       // 층을 갖는 별 피라미드를 출력 :
       // showStarPyramid
       function showStarPyramid(floor) {
+        let result = "";
         for (let j = 1; j <= floor; ++j) {
           // 층 반복문
           for (let i = 1; i <= j; ++i) {
             // 별 반복문
-            document.write(`*`);
+            result += "*";
           }
-          document.write(`<br>`);
+          result += "<br>";
         }
+        document.write(result);
       }
-      showStarPyramid(10);
+      let floor = 5;
+      showStarPyramid(floor);
     </script>
     <br />
     <script>
       // 시분초를 입력받아
       // 오전, 오후 구분하여 출력 : showAMPM
       function showAMPM(time) {
+        let result = `오전 ${time} 입니다.`;
         if (Number(time[0] + time[1]) >= 12) {
-          return `오후 ${time} 입니다.`;
-        } else return `오전 ${time} 입니다.`;
+          result = `오후 ${time} 입니다.`;
+        }
+        return result;
       }
-      document.write(showAMPM("12:00:00"));
+      result = showAMPM("11:00:00");
+      document.write(result);
     </script>
     <br />
     <script>
       // 국어, 영어, 수학을 입력하면
       // 학점을 출력 : computeSungJuk
       function computeSungJuk(kor, eng, mat) {
-        let tot = kor + eng + mat;
-        let avg = tot / 3;
-        let grd = "";
+        let tot = kor + eng + mat, avg = tot / 3, grd = "가";
         switch (parseInt(avg) / 10) {
           case 10:
           case 9:
@@ -125,9 +122,6 @@
             break;
           case 6:
             grd = "양";
-            break;
-          default:
-            grd = "가";
             break;
         }
         return `국어: ${kor}점 영어: ${eng}점 수학: ${mat}점<br>
