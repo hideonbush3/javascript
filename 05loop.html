@@ -30,11 +30,32 @@
     </script>
     <br />
     <script>
+      // 1 ~ 10까지의 정수 출력 v1
+      document.write('1 ');
+      document.write('2 ');
+      document.write('3 ');
+      document.write('4 ');
+      document.write('5 ');
+      document.write('6 ');
+      document.write('7 ');
+      document.write('8 ');
+      document.write('9 ');
+      document.write('10 <br>');
+    </script>
+    <br />
+    <script>
+      // 1 ~ 10까지의 정수 출력 v2
+      for(let i = 1; i <= 10; ++i) {
+        document.write(i, ' ');
+      }
+      document.write('<br>');
+    </script>
+    <script>
       // 1 ~ 100까지의 정수 중 짝수 출력
       let result = "";
       for (i = 1; i < 101; i++) {
-        if (i % 2 == 0) {
-          result += i + " ";
+        if (i % 2 == 0) { // i가 짝수라면
+          result += i + " ";  // result에 i값을 할당해라
         }
       }
       document.write(result, "<br>");
@@ -55,16 +76,17 @@
     <script>
       // 1 ~ 100까지의 정수의 총합 출력
       // 숫자형으로 할당해서 모두 더할 것이므로 0으로 초기화
-      result = 0;
+      let sum = 0;
       for (i = 1; i <= 100; i++) {
-        result += i;
+        sum += i;
       }
-      document.write(result);
+      document.write(sum);
     </script>
     <br />
     <script>
       // a부터 b까지의 정수의 총합 출력 v2 - 가우스 덧셈
       // 가우스 덧셈을 알고있다면 연산량을 드라마틱하게 줄일 수 있다
+      // ((시작숫자 + 종료숫자) x (종료숫자 - 시작숫자 + 1)) / 2
       let a = 4;
       let b = 100;
       result = ((a + b) * (b - a + 1)) / 2;
@@ -104,11 +126,12 @@
     <br />
     <script>
         document.write(`구구단 출력 v3<br>`);
+        // 구구단 출력 v3
         let dan = 5;
-        // 구구단 출력 v2
         for (let i = 1; i <= 9; i++) {
           document.write(`${dan} X ${i} = ${dan * i}<br>`);
         }
+    </script>
       <hr />
 
       <h2>무한 반복문 - for</h2>
@@ -146,45 +169,24 @@
     </script>
     <br />
     <script>
-      // 10층짜리 역 별피라미드 출력
-      for (let j = 10; j >= 1; --j) {
-        // 층 반복문
-        for (i = 1; i <= j; ++i) {
-          // 별 반복문
-          document.write(`*`);
+      // 10층짜리 별* 역 피라미드 출력
+      for (let j = 1; j <= 10; ++j) {  // 층 반복문
+        for (let i = 10; i >= j; --i) { // 별 반복문
+          document.write('*');
         }
-        document.write(`<br>`);
+        document.write('<br>');
       }
     </script>
     <br />
     <script>
       document.write(`구구단 출력 v4<br>`);
-      // 구구단 출력 v4
-      // for (dan = 2; dan <= 5; dan++) {
-      //   for (let i = 1; i <= 9; i++) {
-      //     document.write(`${dan} * ${i} = ${dan * i}<br>`);
-      //   }
-      //   document.write(`<br>`);
-      // }
-      for (let i = 1; i <= 9; i++) {
-        for (dan = 2; dan <= 5; dan++) {
-          document.write(
-            dan +
-              " " +
-              "X" +
-              " " +
-              i +
-              " " +
-              "=" +
-              " " +
-              " " +
-              dan * i +
-              " " +
-              " " +
-              "\t"
-          );
+      // 구구단 2~5단 가로로 출력 v4
+      for(let i = 1; i <= 9; ++i) {  // 행 반복문
+        for(let j = 2; j <= 5; ++j) { // 단 반복문
+          document.write(`${j} x ${i} = ${j * i}`);
+          document.write(`&nbsp;&nbsp;&nbsp;`);
         }
-        document.write(`<br>`);
+        document.write('<br>');
       }
     </script>
     <hr />
@@ -198,11 +200,11 @@
       sum = 0;
 
       let i = 1; // 초기식을 전역변수처럼 선언
-      for (; i <= 1000; i++) {
-        sum += i;
+      for (; i <= 1000; ++i) {
         if (sum >= 10000) {
           break;
         }
+        sum += i;
       }
       document.write(i, "/", sum);
     </script>
