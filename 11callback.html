@@ -68,6 +68,16 @@
         let datetime = today.getFullYear() + "-";
         datetime += today.getMonth() + 1 + "-";
         datetime += today.getDate() + " ";
+        datetime += '일' + ' ';
+        switch (today.getDay()){
+          case 1: datetime += '월' + ' ';
+          case 2: datetime += '화' + ' ';
+          case 3: datetime += '수' + ' ';
+          case 4: datetime += '목' + ' ';
+          case 5: datetime += '금' + ' ';
+          case 6: datetime += '토' + ' ';
+        };
+        datetime += today.getHours() < 12 ? '오전 ' : '오후 ';
         datetime += today.getHours() + ":";
         datetime += today.getMinutes() + ":";
         datetime += today.getSeconds();
