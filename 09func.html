@@ -1,119 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>자바스크립트 함수</title>
-</head>
-<body>
-<h1>자바스크립트 함수</h1>
-<hr>
+  </head>
+  <body>
+    <h1>자바스크립트 함수</h1>
+    <hr />
 
-<h2>함수 와부 참조</h2>
-<p>함수 정의를 독립적인 소스파일에 작성하고
-  사용하려는 곳에서 이것을 호출해서 사용할 수 있음</p>
-<p>script 태그의 src 속성을 이용해서 소스파일을 지정해야 함</p>
+    <h2>함수 와부 참조</h2>
+    <p>
+      함수 정의를 독립적인 소스파일에 작성하고 사용하려는 곳에서 이것을 호출해서
+      사용할 수 있음
+    </p>
+    <p>script 태그의 src 속성을 이용해서 소스파일을 지정해야 함</p>
 
-<script src="js/08func.js"></script>
-<script>
-  // 윤년 계산 함수 호출
-  let year = 2000;
-  let result = computeLeapYear(year); // 함수호출, 결과저장
-  document.write(result, '<br>');
-  // 별 피라미드출력 함수 호출
-  let floor = 5;
-  showStarPyramid(floor, '<br>');
-  // 오전, 오후 여부 출력 함수
-  result = showAMPM("11:00:00");
-  document.write(result, '<br>');
-  // 성적 계산 함수 호출
-  document.write(computeSungJuk(10, 20, 30), '<br>');
-</script>
-<hr>
+    <script src="js/08func.js"></script>
+    <script>
+      // 윤년 계산 함수 호출
+      let year = 2000;
+      let result = computeLeapYear(year); // 함수호출, 결과저장
+      document.write(result, "<br>");
 
-<h2>익명함수</h2>
-<p>자바스크립트의 함수는 1급시민이므로
-값으로 취급할 수 있음</p>
-<p>따라서, 함수를 익명으로 정의한 후
-변수에 대입하는 식으로 함수를 선언할 수 있음</p>
-<script>
-    let sayHello4 = function (msg) {
-    return `Hello ${msg}<br>`;
-}
- result = sayHello4('1급시민');
-    document.write(result);
-</script>
-<hr>
+      // 별 피라미드출력 함수 호출
+      let floor = 5;
+      showStarPyramid(floor, "<br>");
 
-<h2>화살표 함수</h2>
-<p>ES6에서 추가된 기능으로 함수 선언을 간단하게 작성 가능</p>
-<p>즉, function이라는 키워드 대신 => 를 이용해서
-함수를 선언할 수 있음</p>
-<script>
-    // 화살표 함수 사용방법
-    // let 변수명 = () => {코드}
-    let sayHello5 = (msg) => {
+      // 오전, 오후 여부 출력 함수
+      result = showAMPM("11:00:00");
+      document.write(result, "<br>");
+
+      // 성적 계산 함수 호출
+      document.write(computeSungJuk(10, 20, 30), "<br>");
+    </script>
+    <hr />
+
+    <h2>익명함수</h2>
+    <p>자바스크립트의 함수는 1급시민이므로 값으로 취급할 수 있음</p>
+    <p>
+      따라서, 함수를 익명으로 정의한 후 변수에 대입하는 식으로 함수를 선언할 수
+      있음
+    </p>
+    <script>
+      let sayHello4 = function (msg) {
         return `Hello ${msg}<br>`;
-    }
-    result = sayHello5('JAVA');
-    document.write(result);
-</script>
-<br>
-<script>
-    // 코드가 한줄짜리면 함수의 중괄호 생략가능
-    // let 변수명 = () => 코드
-    let sayHello6 = (msg) =>
-        document.write(`Hello ${msg}!!<br>`);
+      };
+      result = sayHello4("1급시민");
+      document.write(result);
+    </script>
+    <hr />
 
-    sayHello6('중괄호 생략 화살표 함수');
+    <h2>화살표 함수</h2>
+    <p>ES6에서 추가된 기능으로 함수 선언을 간단하게 작성 가능</p>
+    <p>즉, function이라는 키워드 대신 => 를 이용해서 함수를 선언할 수 있음</p>
+    <script>
+      // 화살표 함수 사용방법
+      // let 변수명 = (매개변수) => {코드}
+      let sayHello5 = (msg) => {
+        return `Hello ${msg}<br>`;
+      };
+      result = sayHello5("JAVA");
+      document.write(result);
+    </script>
+    <br />
+    <script>
+      // 코드가 한줄짜리면 함수의 중괄호 생략가능
+      // let 변수명 = () => 코드
+      let sayHello6 = (msg) => document.write(`Hello ${msg}!!<br>`);
 
-</script>
-<br>
-<script>
-    // 코드가 한줄짜리면 함수의 중괄호 생략가능
-    // let 변수명 = () => 코드
-    let sayHello7 = (msg) =>
-        `Hello ${msg}!!`;
+      sayHello6("중괄호 생략 화살표 함수");
+    </script>
+    <br />
+    <script>
+      // 코드가 한줄짜리면 함수의 중괄호, return 생략가능
+      // let 변수명 = () => 코드
+      let sayHello7 = (msg) => `Hello ${msg}!!`;
 
-    result = sayHello7('중괄호, 리턴 생략 화살표 함수');
-    document.write(result);
-</script>
-<br>
-<script>
-    let price = 15000;
-    // 부가세 계산 프로그램 : computeVAT
-    // 금액을 입력하면 부가세를 계산해서 출력
+      result = sayHello7("중괄호, 리턴 생략 화살표 함수");
+      document.write(result);
+    </script>
+    <br />
+    <script>
+      let price = 15000;
+      // 부가세 계산 프로그램 : computeVAT
+      // 금액을 입력하면 부가세를 계산해서 출력
 
-    // 선언형
-    function computeVAT(price){
-        return `부가세: ${price*0.1}`;
-    }
-    result = computeVAT(price);
-    document.write(result);
+      // 선언형
+      function computeVAT(price) {
+        return `부가세: ${price * 0.1}`;
+      }
+      result = computeVAT(price);
+      document.write(result);
 
-    // 익명
-    let computeVAT1 = function(price){
-        return `부가세: ${price*0.1}`;
-    }
-    result = computeVAT1(price);
-    document.write(result);
+      // 익명
+      let computeVAT2 = function (price) {
+        return `부가세: ${price * 0.1}`;
+      };
+      result = computeVAT2(price);
+      document.write(result);
 
-    // 화살표 v1
-    let computeVAT2 = (price) => {
-        return `부가세: ${price*0.1}`;
-    }
-    result = computeVAT2(price);
-    document.write(result);
-    // 화살표 v2
-    let computeVAT3 = (price) =>
-    document.write(`부가세: ${price*0.1}`);
+      // 화살표 v1
+      let computeVAT3 = (price) => {
+        return `부가세: ${price * 0.1}`;
+      };
+      result = computeVAT3(price);
+      document.write(result);
+      // 화살표 v2
+      let computeVAT4 = (price) => document.write(`부가세: ${price * 0.1}`);
 
-    computeVAT3(price);
-    // 화살표 v3
-    let computeVAT4 = (price) =>
-        `부가세: ${price*0.1}`;
+      computeVAT4(price);
+      // 화살표 v3
+      let computeVAT5 = (price) => `부가세: ${price * 0.1}`;
 
-    result = computeVAT4(price);
-    document.write(result);
-</script>
-</body>
+      result = computeVAT5(price);
+      document.write(result);
+    </script>
+  </body>
 </html>

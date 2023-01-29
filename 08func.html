@@ -44,7 +44,7 @@
     <br />
     <script>
       // 인삿말 v3
-      // 되도록이면 이런 형식으로 사용해야 함수를 응용하기 좋다
+      // 되도록이면 return 형식으로 사용해야 함수를 응용하기 좋다
       function sayHello3(msg) {
         return `Hello ${msg}<br>`;
       }
@@ -65,8 +65,8 @@
         return result;
       }
 
-      let year = 2000;
-      let result = computeLeapYear(year); // 함수호출, 결과저장
+      let year = 500;
+      let result = computeLeapYear(year); // 함수호출, 결과할당
       document.write(result);
     </script>
     <br />
@@ -95,12 +95,14 @@
       // 오전, 오후 구분하여 출력 : showAMPM
       function showAMPM(time) {
         let result = `오전 ${time} 입니다.`;
-        if (Number(time[0] + time[1]) >= 12) {
+        let hour = time[0] + time[1];
+
+        if (hour >= 12) {
           result = `오후 ${time} 입니다.`;
         }
         return result;
       }
-      result = showAMPM("11:00:00");
+      result = showAMPM("13:00:00");
       document.write(result);
     </script>
     <br />
@@ -110,21 +112,13 @@
       function computeSungJuk(kor, eng, mat) {
         let tot = kor + eng + mat,
           avg = tot / 3,
-          grd = "가";
+          grd = "가";  // 다중 변수 선언
         switch (parseInt(avg) / 10) {
           case 10:
-          case 9:
-            grd = "수";
-            break;
-          case 8:
-            grd = "우";
-            break;
-          case 7:
-            grd = "미";
-            break;
-          case 6:
-            grd = "양";
-            break;
+          case 9: grd = "수"; break;
+          case 8: grd = "우"; break;
+          case 7: grd = "미"; break;
+          case 6: grd = "양"; break;
         }
         return `국어: ${kor}점 영어: ${eng}점 수학: ${mat}점<br>
 총점: ${tot}점 평균: ${avg}점 등급: ${grd}`;
