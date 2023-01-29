@@ -28,30 +28,37 @@
     console.log(`+---+---+---+---+         (___|___)      -----`);
 
     console.log(a);
-
-    // 2.
-    let so = 3000;
-    let chi = 12000;
-    let order1 = prompt('소주몇병?');
-    let order2 = prompt('치킨몇마리?');
-    let pay = prompt('받은금액')
-    let tot = so*order1 + chi*order2;
-    let boo = tot * 0.1;
-
-    console.log(`[ 음식나라 ]`);
-    console.log(`---------------------`);
-    console.log(`소주     ${order1}      ${so*order1}`);
-    console.log(`너나치킨 ${order2}      ${chi*order2}`);
-    console.log(`---------------------`);
-    console.log(`과세합계        ${tot-boo}`)
-    console.log(`부가세          ${boo}`)
-    console.log(`---------------------`);
-    console.log(`총합계          ${tot}`);
-    console.log(`받은금액        ${pay}`)
-    console.log(`잔돈            ${pay-tot}`)
-    console.log(`---------------------`);
-    console.log(`2014. 07. 07 14:35:24`);
 </script>
+
+<script>
+    // 2.
+    let soju = 3000;
+    let sj_qty = 2;
+    let chicken = 12000;
+    let chck_qty = 1;
+
+    let total = (soju * sj_qty) + (chicken * chck_qty)
+    let vat = total * 0.1;
+
+    let money = 50000;
+    let charge = money - total;
+
+    console.log('  ');
+    console.log(' [ 음식나라 ] ');
+    console.log(' ------------------------ ');
+    console.log(' 소주\t\t',sj_qty,'\t\t',soju*sj_qty);
+    console.log(` 너나치킨\t ${chck_qty}\t\t${chicken*chck_qty}`);
+    console.log(' ------------------------ ');
+    console.log(` 과세합계\t\t\t${total}`);
+    console.log(` 부가세\t\t\t\t${vat} `);
+    console.log(' ------------------------ ');
+    console.log(` 총합계\t\t\t\t${total}`);
+    console.log(` 받은금액\t\t\t${money}`);
+    console.log(` 잔돈\t\t\t\t${charge}`);
+    console.log(' ------------------------ ');
+    console.log(' 2023. 01. 20\t 13:06:24 ');
+</script>
+
 
 <script>
     // 4.
