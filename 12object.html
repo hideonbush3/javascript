@@ -263,7 +263,7 @@
           return `이름: ${this.name}<br>
 국어: ${this.kor}점 영어: ${this.eng}점 수학: ${this.mat}점<br>
 총점: ${this.tot}점 평균: ${this.avg}점 등급: ${this.grd}<br><br>`;
-        },
+        }
       };
 
       SungJuk.name = "지현";
@@ -291,7 +291,7 @@
 
       let computeSungJuk = (sj) => {
         sj.tot = sj.kor + sj.eng + sj.mat;
-        sj.avg = this.tot / 3;
+        sj.avg = sj.tot / 3;
         switch (parseInt(sj.avg / 10)) {
           case 10:
           case 9:sj.grd = "수";
