@@ -242,7 +242,8 @@
       // computeSungJuk 총점, 평균, 학점을 처리하고
       // showSungJuk는 성적처리결과를 출력함
 
-      class SungJuk { // 값만 다루는 클래스 : VO 또는 DTO
+      class SungJuk {
+        // 값만 다루는 클래스 : VO 또는 DTO
         #name = "";
         #kor = 0;
         #eng = 0;
@@ -309,7 +310,8 @@
     </script>
 
     <script>
-      class SungJukService {  // 기능만 다루는 클래스 : Service 또는 DAO 또는 Util
+      class SungJukService {
+        // 기능만 다루는 클래스 : Service 또는 DAO 또는 Util
         computeSungJuk(sj) {
           sj.tot = sj.kor + sj.eng + sj.mat;
           sj.avg = sj.tot / 3;
@@ -331,12 +333,12 @@
               sj.grd = "가";
               break;
           }
-        };
+        }
         showSungJuk(sj) {
           return `이름: ${sj.name}<br>
 국어: ${sj.kor}점 영어: ${sj.eng}점 수학: ${sj.mat}점<br>
 총점: ${sj.tot}점 평균: ${sj.avg}점 등급: ${sj.grd}<br><br>`;
-        };
+        }
       }
 
       let stud1 = new SungJuk("수지", 32, 43, 57);
@@ -350,14 +352,14 @@
       document.write(sjsrv.showSungJuk(stud1));
       document.write(sjsrv.showSungJuk(stud2));
 
-      document.write(stud1.toString());  // .toString() 생략가능
+      document.write(stud1.toString()); // .toString() 생략가능
       document.write(stud2);
     </script>
 
     <script src="js/SungJuk.js"></script>
 
     <script>
-      let stud3 = new SungJuk2('현아', 12, 23, 49);
+      let stud3 = new SungJuk2("현아", 12, 23, 49);
 
       // static 함수이므로 객체 생성없이 바로 호출 가능
       SungJukService2.computeSungJuk(stud3);
