@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자바스크립트 클래스</title>
+    <script src="js/13oop.js"></script>
+  </head>
+  <body>
+    <h1>자바스크립트 클래스</h1>
+    <p>개요</p>
+    <p>OOP는 객체를 기반으로 프로그램을 설계하는 방식을 의미</p>
+    <p>
+      프로그램을 단순히 데이터(변수)와 처리방법(함수)으로 나누는 것 보다 하나의
+      객체에 모두 담아두고, 이들의 상호작용으로 프로그래밍하는 방식을 의미함
+    </p>
+    <p>OOP에서 객체를생성하기 위한 가장 기본적인 요소는 바로 클래스임</p>
+    <hr />
+
+    <h2>클래스</h2>
+    <p>
+      특정 객체(붕어빵)를 생성하기 위해 변수와 메서드를 정의하는 일종의
+      틀(붕어빵 틀)
+    </p>
+    <p>객체를 정의하기 위한 상태(변수)와 행위(메서드)로 구성</p>
+    <p>class 클래스명{</p>
+    <p>변수들...</p>
+    <p>constructor(){ } // 생성자</p>
+    <p>setter/getter</p>
+    <p>메서드() { }</p>
+    <p>}</p>
+
+    <p>생성자 : 클래스내 멤버변수에 값을 초기화하는 특수한 함수</p>
+    <script>
+      class Hello {
+        // 멤버변수 선언 x
+        // this = {}; // 시스템에 의해 자동 생성
+        constructor(msg) {
+          this.msg = msg;
+        } // 생성자
+        sayHello() {
+          document.write(`Hello, ${this.msg}<br>`);
+        }
+      }
+
+      let say1 = new Hello("JAVA");
+      say1.sayHello();
+
+      let say2 = new Hello("HTML5");
+      say2.sayHello();
+
+      let say3 = new Hello("CSS3");
+      say3.sayHello();
+    </script>
+
+    <script>
+      // case 1: 아이디, 비번, 이름, 이메일을
+      // 저장하기 위한 변수를 선언하고 적절한 값으로 초기화하세요
+      let userid = "faker";
+      let passwd = "abc123";
+      let name = "Lee";
+      let email = "faker@asd.com";
+      // 4개의 변수를 각각 선언한 다음 값을 초기화함
+    </script>
+
+    <script>
+      // case 2: 아이디, 비번, 이름, 이메일을
+      // 저장하기 위한 User 클래스를 생성하고
+      // 생성자를 사용해서 적절한 값으로 초기화하세요
+      class User {
+        constructor(userid, passwd, name, email) {
+          this.userid = userid;
+          this.passwd = passwd;
+          this.name = name;
+          this.email = email;
+        }
+      }
+      // 객체 생성
+      let user = new User("faker", "abc123", "Lee", "faker@asd.com");
+
+      for (let prop in user) {
+        document.write(user[prop], " ");
+      }
+    </script>
+    <hr />
+
+    <h2>setter/getter</h2>
+    <p>
+      캡슐화: 객체에 선언된 변수나 함수에 아무렇게나 접근하지 못하게하고 정해진
+      함수를 통해서만 상호작용하도록 은닉화하는 것을 의미
+    </p>
+    <p>
+      자바스크립트에서는 은닉화된 데이터에 접근하기 위해 setter/getter 함수를
+      사용함
+    </p>
+    <p>하지만, 경우에 따라 setter 또는 getter만 만들어 쓰기도 함</p>
+    <script>
+      // 생성자를 사용하지 않고
+      // 객체의 값을 초기화 한다면?
+      user = new User();
+      user.userid = "deft";
+      user.name = "Kim";
+      user.passwd = "abc123";
+      user.email = "deft@asd.com";
+      document.write(user.name, " ", user.userid, "<br>");
+
+      // '객체명.변수명' 형식으로 값을 초기화할 수 있음
+      // 따라서 객체안에 선언된 변수를 외부에서
+      // 함부로 다루지 못하게 막을 필요 존재
+    </script>
+
+    <script>
+      class User2 {
+        _userid = ""; // protected 속성으로 선언
+        #passwd = ""; // private 속성으로 선언
+        _name = "";
+        _email = "";
+        constructor(userid, passwd, name, email) {
+          this._userid = userid;
+          this.#passwd = passwd;
+          this._name = name;
+          this._email = email;
+        }
+      }
+
+      user = new User2();
+      user._userid = "User2";
+      user.#passwd = "User2passwd"; // 에러
+      // private 속성으로 선언된 변수는
+      // 클래스 외부에서 접근할수 없음
+      // 따라서, 값 조작도 불가
+      document.write(user.userid);
+      document.write(user.passwd, "<br>"); // 출력안됨
+    </script>
+
+    <script>
+      // 역시나 에러
+      user = new User3();
+
+      user.#userid = "User3";
+      user.#passwd = "User3passwd"; // 에러
+
+      document.write(user.userid);
+      document.write(user.passwd, "<br>"); // 출력안됨
+    </script>
+
+    <script>
+      // 그렇다면 private 속성은 어떻게 접근해야할까?
+      class User4 {
+        #userid = ""; // 4. #userid에 'User4'가 할당된 상태
+        #passwd = "";
+
+        // userid를 매개변수로 받는 함수
+        setUserid(userid) {
+          // 2. 함수 실행
+          // setter : setXxx 값을 초기화시키기위해 사용하는 함수
+          this.#userid = userid; // 3. User4 클래스의 #userid에 받은 매개변수 "User4"를 할당
+        }
+
+        getUserid() {
+          // 6. 함수 실행
+          // getter : getXxx 값을 빼낼때는 getter 사용
+          return this.#userid; // 7. #userid를 호출한곳으로 반환
+        }
+      }
+
+      user = new User4(); // 0. User4를 클래스로하는 user라는 객체 생성
+      user.setUserid("User4"); // 1. 매개변수로 'User4'를 주고 함수 호출
+      document.write(user.getUserid(), "<br>"); // 5. 함수 호출, 8. 반환받은 값 출력
+    </script>
+
+    <script>
+      // 자바스크립트에서는 set, get을 이런방식으로 사용하길 권장함
+      // set, get 부분만 바뀜
+      class User5 {
+        #userid = "";
+        #passwd = "";
+
+        set userid(userid) {
+          this.#userid = userid;
+        }
+
+        get userid() {
+          return this.#userid;
+        }
+      }
+
+      user = new User5();
+      user.userid = "User5";
+      document.write(user.userid, "<br>");
+    </script>
+
+    <script>
+      class User6 {
+        #userid = "";
+        #passwd = "";
+
+        set userid(userid) {
+          // set 값을 초기화시키기위해 사용하는 함수
+          if (userid.length < 6) {
+            document.write("아이디는 최소6글자 이상이여야 합니다", "<br>");
+            return; // 함수내에서 특정시점에 실행 중단
+          }
+          this.#userid = userid;
+        }
+
+        get userid() {
+          // get 값을 빼낼때는 getter 사용
+          return this.#userid;
+        }
+      }
+
+      user = new User6();
+      user.userid = "User6";
+      document.write("[", user.userid, "] <br>");
+    </script>
+    <hr />
+    <script>
+      class Cat {
+        #name = "";
+        #age = 0;
+        #sex = false;
+      }
+    </script>
+
+    <h2>instanceof</h2>
+    <p>어떤 객체가 특정 클래스에 속하는지 여부를 알 수 있음</p>
+
+    <script>
+      document.write(user instanceof User6, "<br>");
+      document.write(user instanceof User4, "<br>");
+    </script>
+
+    <script>
+      // ex) 성적 처리프로그램 v5
+      // 이름, 국어, 영어, 수학을 입력받아
+      // 총점, 평균, 학점을 계산한 뒤 결과 출력
+
+      // 단, 학생이름과 성적들은 SungJuk이라는 클래스에 저장
+      // SungJukService 클래스에는 computeSungJuk,
+      // showSungJuk 이라는 함수를 포함하고 있음
+
+      // computeSungJuk 총점, 평균, 학점을 처리하고
+      // showSungJuk는 성적처리결과를 출력함
+
+      class SungJuk { // 값만 다루는 클래스 : VO 또는 DTO
+        #name = "";
+        #kor = 0;
+        #eng = 0;
+        #mat = 0;
+        #tot = 0;
+        #avg = 0.0;
+        #grd = "";
+        constructor(name, kor, eng, mat) {
+          this.#name = name;
+          this.#kor = kor;
+          this.#eng = eng;
+          this.#mat = mat;
+        }
+        set name(name) {
+          this.#name = name;
+        }
+        get name() {
+          return this.#name;
+        }
+        set kor(kor) {
+          this.#kor = kor;
+        }
+        get kor() {
+          return this.#kor;
+        }
+        set eng(eng) {
+          this.#eng = eng;
+        }
+        get eng() {
+          return this.#eng;
+        }
+        set mat(mat) {
+          this.#mat = mat;
+        }
+        get mat() {
+          return this.#mat;
+        }
+        set tot(tot) {
+          this.#tot = tot;
+        }
+        get tot() {
+          return this.#tot;
+        }
+        set avg(avg) {
+          this.#avg = avg;
+        }
+        get avg() {
+          return this.#avg;
+        }
+        set grd(grd) {
+          this.#grd = grd;
+        }
+        get grd() {
+          return this.#grd;
+        }
+
+        // SungJuk의 부모 클래스인 Object의 메서드 toString()을 오버라이딩 할거임
+        toString() {
+          return `이름: ${this.#name}<br>
+국어: ${this.#kor}점 영어: ${this.#eng}점 수학: ${this.#mat}점<br>
+총점: ${this.#tot}점 평균: ${this.#avg}점 등급: ${this.#grd}<br><br>`;
+        }
+      }
+    </script>
+
+    <script>
+      class SungJukService {  // 기능만 다루는 클래스 : Service 또는 DAO 또는 Util
+        computeSungJuk(sj) {
+          sj.tot = sj.kor + sj.eng + sj.mat;
+          sj.avg = sj.tot / 3;
+          switch (parseInt(sj.avg / 10)) {
+            case 10:
+            case 9:
+              sj.grd = "수";
+              break;
+            case 8:
+              sj.grd = "우";
+              break;
+            case 7:
+              sj.grd = "미";
+              break;
+            case 6:
+              sj.grd = "양";
+              break;
+            default:
+              sj.grd = "가";
+              break;
+          }
+        };
+        showSungJuk(sj) {
+          return `이름: ${sj.name}<br>
+국어: ${sj.kor}점 영어: ${sj.eng}점 수학: ${sj.mat}점<br>
+총점: ${sj.tot}점 평균: ${sj.avg}점 등급: ${sj.grd}<br><br>`;
+        };
+      }
+
+      let stud1 = new SungJuk("수지", 32, 43, 57);
+      let stud2 = new SungJuk("유정", 81, 53, 64);
+
+      let sjsrv = new SungJukService();
+
+      sjsrv.computeSungJuk(stud1);
+      sjsrv.computeSungJuk(stud2);
+
+      document.write(sjsrv.showSungJuk(stud1));
+      document.write(sjsrv.showSungJuk(stud2));
+
+      document.write(stud1.toString());  // .toString() 생략가능
+      document.write(stud2);
+    </script>
+
+    <script src="js/SungJuk.js"></script>
+
+    <script>
+      let stud3 = new SungJuk2('현아', 12, 23, 49);
+
+      // static 함수이므로 객체 생성없이 바로 호출 가능
+      SungJukService2.computeSungJuk(stud3);
+      document.write(stud3);
+    </script>
+  </body>
+</html>
