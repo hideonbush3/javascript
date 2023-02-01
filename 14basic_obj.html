@@ -254,7 +254,7 @@
       document.write(Math.ceil(num), "<br>");
 
       // random : 0~1 임의 실수 출력
-      // 특정 범위 임의의 정수 생성 공식
+      // min~max 임의의 정수 생성 공식
       // Math.floor(Math.random() * (max - min + 1)) + min
 
       // ex) 위 공식을 이용해서 randInt라는 함수를 만듦
@@ -271,7 +271,7 @@
     <hr />
 
     <h2>Date</h2>
-    <p>날짜와 시간을 디루는 힘수</p>
+    <p>날짜와 시간을 다루는 힘수</p>
 
     <script>
       // Date()
@@ -299,7 +299,7 @@
       document.write(date1 - date2, "<br>"); // msec
       document.write(Math.floor((date1 - date2) / 1000), "<br>"); // sec
       document.write(
-        Math.floor(Math.floor((date1 - date2) / 1000) / (24 * 3600)),
+        Math.floor((date1 - date2) / 1000) / (24 * 3600),
         "<br>"
       ); // day
 
