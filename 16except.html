@@ -29,35 +29,35 @@
 
     <script>
       // 정상실행 - 시작/끝 메세지 출력
-      document.write("-프로그램 시작 -", "<br>");
+      document.write("-프로그램 시작1 -", "<br>");
       document.write(`100/10 = ${100 / 10}`, "<br>");
-      document.write("-프로그램 끝-", "<br>");
+      document.write("-프로그램 끝1-", "<br>");
     </script>
 
     <script>
       // 실행중단 - 시작 메세지만 출력
-      document.write("-프로그램 시작 -", "<br>");
+      document.write("-프로그램 시작2 -", "<br>");
       document.write(`100/10 = ${100 / num}`, "<br>");
-      document.write("-프로그램 끝-", "<br>");
+      document.write("-프로그램 끝2-", "<br>");
     </script>
 
     <script>
       // 예외처리 v1
-      document.write("-프로그램 시작 -", "<br>");
+      document.write("-프로그램 시작3 -", "<br>");
       try {
         document.write(`100/10 = ${100 / num}`, "<br>");
       } catch (e) {
         document.write("오류발생! - num변수를 선언하고 쓰세요!", "<br>");
       }
-      document.write("-프로그램 끝-", "<br>");
+      document.write("-프로그램 끝3-", "<br>");
     </script>
 
     <script>
       // 예외처리 v2
       try {
-        document.write("-프로그램 시작 -", "<br>");
+        document.write("-프로그램 시작4 -", "<br>");
         document.write(`100/10 = ${100 / num}`, "<br>");
-        document.write("-프로그램 끝-", "<br>");
+        document.write("-프로그램 끝4-", "<br>");
       } catch (e) {
         document.write("오류발생!", "<br>");
       }
@@ -93,9 +93,9 @@
         document.write(sayHello);
       } catch (e) {
         if (e instanceof ReferenceError)
-          // 객체 e가 ReferenceError클래스의 객체인가?
+          // 객체 e가 ReferenceError클래스의 객체인가? 이 말인 즉슨,
           // 발생한 오류가 ReferenceError와 관련이 있는가?
-          document.write(e.message, "<br>");
+          document.write(e.name, "<br>", e.message, "<br>");
         document.write("오류:변수나 함수를 선언하세요", "<br>");
       }
     </script>
@@ -124,7 +124,9 @@
       try {
         checkAge2(150);
       } catch (e) {
-        if (e instanceof RangeError) document.write("나이 잘못 입력", "<br>");
+        if (e instanceof RangeError)
+          // 발생한 오류가 RangeError와 관련이 있는가?
+          document.write(e.name, "<br>", "나이 잘못 입력", "<br>");
       }
     </script>
   </body>
