@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자바스크립트 JSON</title>
+  </head>
+  <body>
+    <h1>자바스크립트 JSON</h1>
+    <hr />
+
+    <h2>개요</h2>
+    <p>JavaScript Object Notation의 약자</p>
+    <p>
+      데이터를 저장하거나 다른 시스템으로 전송시 많이 사용하는 데이터 교환형식
+    </p>
+
+    <p>
+      즉, 시스템에 생성된 객체를 문자열 형태로 변환해서 네트워크를 통해 다른
+      곳으로 전송할때 자주 사용하는 데이터 형식을 의미
+    </p>
+
+    <p>
+      이때, 전환된 문자열에는 원하는 정보가 있는 객체의 속성이 그대로 포함되어야
+      함
+    </p>
+
+    <p>
+      이전에 사용했던 데이터 교환형식인 XML에 비해 적은 코드로 데이터를 정의할
+      수 있음
+    </p>
+
+    <script>
+      // 아이디/비밀번호로 구성된 user 객체 정의 1 - csv
+      // userid,passwd
+      // abc123,987xyz
+
+      // 직렬화/역직렬화 등의 추가작업 필요
+    </script>
+
+    <script>
+      // 아이디/비밀번호로 구성된 user 객체 정의 2 - xml
+      //<user>
+      // <userid>abc123</userid>
+      // <passwd>987xyz</passwd>
+      //</user>
+
+      // csv에 비해 직렬화/역직렬화는 편하지만
+      // 데이터 정의시 쓸데없는 코드가 많이 필요
+    </script>
+
+    <script>
+      // 아이디/비밀번호로 구성된 user 객체 정의 3 - JSON
+      let user = {
+        userid: "abc123",
+        passwd: "987xyz",
+      };
+
+      // csv, xml에 비해 직렬화/역직렬화가 편하고
+      // 데이터 정의시 쓸데없는 코드가 많이 줄어듦
+    </script>
+    <hr />
+
+    <h2>JSON 직렬화/역직렬화</h2>
+    <p>
+      stringify(직렬화) : 객체를 문자열로 변환하는 함수, 데이터를 서버로 전송
+      또는 객체 출력시 사용
+    </p>
+
+    <p>
+      parse(역직렬화) : 문자열을 객체로 변환하는 함수, 서버가 보내준 데이터를
+      클라이언트에서 작업시 사용
+    </p>
+    <hr />
+
+    <h3>직렬화</h3>
+    <script>
+      // 위에서 만든 user 객체 출력하기 1
+      document.write(user, "<br>");
+
+      // 위에서 만든 user 객체 출력하기 2 - toString
+      let user2 = {
+        userid: "abc123",
+        passwd: "987xyz",
+        toString() {
+          return `${this.userid} ${this.passwd}`;
+        },
+      };
+
+      document.write(user2, "<br>");
+      // 객체의 내용을 출력하기위해 toString 함수 추가
+      // 하지만, 객체의 속성이 추가되면 toString 함수도 수정해야함!
+
+      // 위에서 만든 user 객체 출력하기 3 - stringify
+      let json = JSON.stringify(user);
+      document.write(json, "<br>");
+
+      // stringify 함수만으로 객체 내용 출력
+    </script>
+    <hr />
+
+    <h3>역직렬화</h3>
+    <script>
+      user = '{ "userid":"abc123", "passwd":"987xyz" }';
+      let obj = JSON.parse(user);
+      for (let a in obj) {
+        document.write(obj[a], "<br>");
+      }
+    </script>
+
+    <script>
+      // users 배열에서 abc123 아이디가 존재하는지 확인
+      users = ["abc456", "abc789", "xyz123", "abc123", "xyz789"];
+
+      for (let i = 0; i < users.length; i++) {
+        if (users[i] == "abc123") {
+          document.write(`${i + 1}번에 있어요 <br>`);
+          break;
+        }
+      }
+    </script>
+
+    <script>
+      let sjs = `[{ "name": "혜교", "grd": "수" },
+        { "name": "지현", "grd": "미" },
+        { "name": "수지", "grd": "가" }]`;
+
+      obj = JSON.parse(sjs);
+      document.write(obj, "<br>");
+
+      // 배열객체를 구성하는 개별 요소에 접근하려면
+      // 객체명[인덱스].속성명 형식으로 사용
+      document.write(obj[0].name, obj[0].grd, "<br>");
+      document.write(obj[2].name, obj[2].grd, "<br>");
+    </script>
+
+    <script>
+      // 지현 학생의 성적 출력한다면? v1
+
+      let sj = null;
+      for (i = 0; i < obj.length; i++) {
+        if (obj[i].name == "지현") {
+          sj = obj[i];
+          break;
+        }
+      }
+
+      document.write("지현", " ", sj.grd, "<br>");
+    </script>
+
+    <script>
+      // 지현 학생의 성적 출력한다면? v2
+      // filter 함수로 객체 탐색시
+      // 탐색대상 객체의 자료형은 객체여야 함
+
+      sjs = `{"sjs" : [{ "name": "혜교", "grd": "수" },
+                    { "name": "지현", "grd": "미" },
+                    { "name": "수지", "grd": "가" }]}`;
+
+      obj = JSON.parse(sjs);
+
+      // filter : 대상 객체를 요소를 순회해 가면서
+      // 콜백함수에 매개변수로 넘긴 후 처리하는 함수
+      // 반환값은 배열형태로 넘겨받음
+      // filter, map, reduce : 고차함수
+      sj = obj.sjs.filter(function (s) {
+        document.write(s.name, "<br>");
+        if (s.name == "지현") return s;
+      });
+
+      // sj = obj.sjs.filter(s => (s.name == '지현'));
+
+      document.write("지현", " ", sj[0].grd, "<br>");
+    </script>
+  </body>
+</html>
