@@ -77,6 +77,7 @@
       // 객체 생성
       let user = new User("faker", "abc123", "Lee", "faker@asd.com");
 
+      // 생성한 객체의 모든 변수 출력
       for (let prop in user) {
         document.write(user[prop], " ");
       }
@@ -159,7 +160,7 @@
         getUserid() {
           // 6. 함수 실행
           // getter : getXxx 값을 빼낼때는 getter 사용
-          return this.#userid; // 7. #userid를 호출한곳으로 반환
+          return this.#userid; // 7. #userid의 값을 호출한곳으로 반환
         }
       }
 
@@ -214,13 +215,6 @@
       document.write("[", user.userid, "] <br>");
     </script>
     <hr />
-    <script>
-      class Cat {
-        #name = "";
-        #age = 0;
-        #sex = false;
-      }
-    </script>
 
     <h2>instanceof</h2>
     <p>어떤 객체가 특정 클래스에 속하는지 여부를 알 수 있음</p>
@@ -229,6 +223,7 @@
       document.write(user instanceof User6, "<br>");
       document.write(user instanceof User4, "<br>");
     </script>
+    <hr />
 
     <script>
       // ex) 성적 처리프로그램 v5
@@ -299,7 +294,6 @@
         get grd() {
           return this.#grd;
         }
-
         // SungJuk의 부모 클래스인 Object의 메서드 toString()을 오버라이딩 할거임
         toString() {
           return `이름: ${this.#name}<br>
@@ -359,11 +353,14 @@
     <script src="js/SungJuk.js"></script>
 
     <script>
+      // write함수는 기본적으로 toString() 함수를 호출한다
+      // 그러므로 stud3라고 적은것이지만 실제로는 stud3.toString() 이므로
+      // stud3의 toString()함수를 자동으로 호출해줌
       let stud3 = new SungJuk2("현아", 12, 23, 49);
-
+      document.write(stud3); // 성적 계산이 되기전 객체 stud3의 toString() 함수를 호출했을때는 이름과 과목별 성적만 출력되는걸 확인할 수 있음
       // static 함수이므로 객체 생성없이 바로 호출 가능
-      SungJukService2.computeSungJuk(stud3);
-      document.write(stud3);
+      SungJukService2.computeSungJuk(stud3); // 함수가 실행되고 객체 stud3의 tot, avg, grd에 값이 할당됨
+      document.write(stud3); // 다시 stud3.toString() 호출해서 반환값을 호출해보면 tot, avg, grd에 값이 할당된걸 확인가능
     </script>
   </body>
 </html>
