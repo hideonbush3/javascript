@@ -146,12 +146,20 @@
       mywin.resizeTo(w, h);
     };
 
+    // 2. setInterval(...) 코드안의 내용이 무슨 얘기냐면
+    // setInterval 함수를 호출하는 방법은 원래
+    // setInterval (함수, 반복주기); 이다
+    // setInterval의 ()안에서 resizeWin와 moveWin함수를 호출하는
+    // 화살표 함수를 만든 것임
+    // 요약하자면,
+    // 바깥에서 화살표 함수를 만들고 그것을 익명함수방식으로 변수에 넣고
+    // setInterval 함수안에 변수명을 넣어서 호출하는 것이랑 똑같다는 것이다!
     let startRndWin = () => {
       makeWin2();
       intv = setInterval(() => {
         resizeWin(), moveWin();
       }, 1500);
-    };
+    };  // 1. 이게 처음에 헷갈렸었다
 
     let stopRndWin = () => {
       clearInterval(intv);
