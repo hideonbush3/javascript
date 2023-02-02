@@ -10,7 +10,7 @@
 
     <h2>개요</h2>
     <p>
-      텍스트파일로 만들어져 있는 html 문서를 브라우져에 시각적으로
+      텍스트파일로 만들어져 있는 html 문서를 브라우저에 시각적으로
       나타내려면(렌더링) 먼저, 문서의 내용을 브라우저가 이해할 수 있는 형태로
       메모리에 업로드하는 과정(파싱parsing)이 먼저 선행
     </p>
@@ -24,14 +24,16 @@
     </p>
     <hr />
     <h2>DOM tree</h2>
-    <div>(그림)DOM tree</div>
+    <div>
+      <img src="img/domtree.png" />
+    </div>
 
     <p>
       document node : 트리의 최상위 요소 DOM tree에 접근하기 위한 진입점(entry
       point)
     </p>
-    <p>element node : HTML 상의 요소(태그)를 의미</p>
-    <p>attribute node : HTML상의 요소(태그)내 속성을 의미</p>
+    <p>element node : HTML의 요소(태그)를 의미</p>
+    <p>attribute node : HTML의 요소(태그)내 속성을 의미</p>
     <p>text node : HTML의 요소(태그) 내 텍스트를 의미</p>
     <hr />
 
@@ -46,7 +48,7 @@
 
     <div>
       <p id="one" class="first">시간은 금이라구 친구</p>
-      <p id="two" class="first">
+      <p id="two" class="second">
         별의 영역이 광활하다는 건 놀라운 것이 아니다. 인류가 그것을 측정해낸 게
         놀랍다
       </p>
@@ -70,7 +72,7 @@
       // three라는 요소는 배경색(검정)을 지정
       const three = document.getElementById("three");
       three.style.background = "black";
-      three.style.color = "white";
+      three.style.color = "yellow";
     </script>
   </body>
 </html>
