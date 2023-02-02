@@ -83,7 +83,7 @@
         passwd: "987xyz",
         toString() {
           return `${this.userid} ${this.passwd}`;
-        }
+        },
       };
 
       document.write(user2, "<br>");
@@ -101,7 +101,7 @@
     <h3>역직렬화</h3>
     <script>
       user = '{ "userid":"abc123", "passwd":"987xyz" }';
-      document.write(user, '<br>');
+      document.write(user, "<br>");
       let obj = JSON.parse(user); // 문자열이 할당돼있는 user 변수를 객체로 변환해서 obj에 할당
 
       for (let prop in obj) {
@@ -129,12 +129,11 @@
       // let sjs = [{ "name": "혜교", "grd": "수" },
       //   { "name": "지현", "grd": "미" },
       //   { "name": "수지", "grd": "가" }];
-      document.write(sjs, '<br>');  // (1) 이때까진 그냥 변수명으로 출력할 수 있음
-      document.write(sjs.slice(2, 10), '<br>');  // 문자열이라서 slice함수도 사용 가능
+      document.write(sjs, "<br>"); // (1) 이때까진 그냥 변수명으로 출력할 수 있음
+      document.write(sjs.slice(2, 10), "<br>"); // 문자열이라서 slice함수도 사용 가능
 
-
-      obj = JSON.parse(sjs);  // sjs를 객체화해서 obj라는 객체에 데이터 할당
-      document.write(obj, "<br>");  // 위 행의 (1)에서는 문자열이라 변수명만 입력하면
+      obj = JSON.parse(sjs); // sjs를 객체화해서 obj라는 객체에 데이터 할당
+      document.write(obj, "<br>"); // 위 행의 (1)에서는 문자열이라 변수명만 입력하면
       // 출력가능했던 반면 parse 함수를 적용하고 객체가 된것을 확인할 수 있음
       // 객체의 개별 요소에 접근하려면 객체명.요소명 (ex. user.name - user라는 객체의 name요소에 접근)
       // 으로 접근할 수 있었다 그렇다면 배열객체는 어떻게 접근해야할까?
@@ -168,14 +167,15 @@
                     { "name": "수지", "grd": "가" }]}`;
 
       obj = JSON.parse(sjs);
-      document.write(obj.sjs[0].name,'<br>');
+      document.write(obj.sjs[0].name, "<br>");
 
-      // filter : 대상 객체를 요소를 순회해 가면서
+      // filter : 대상 객체의 요소를 순회해 가면서
       // 콜백함수에 매개변수로 넘긴 후 처리하는 함수
       // 반환값은 배열형태로 넘겨받음
       // filter, map, reduce : 고차함수
+      // 실행되면 3번 반복하면서 매개변수 s는 obj.sjs[0~2]이 됨
       sj = obj.sjs.filter(function (s) {
-        document.write(s.name, ' ', 'filter',"<br>");
+        document.write(s.name, " ", "filter", "<br>");
         if (s.name == "지현") return s;
       });
 
