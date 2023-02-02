@@ -167,21 +167,42 @@
                     { "name": "수지", "grd": "가" }]}`;
 
       obj = JSON.parse(sjs);
-      document.write(obj.sjs[0].name, "<br>");
 
-      // filter : 대상 객체의 요소를 순회해 가면서
-      // 콜백함수에 매개변수로 넘긴 후 처리하는 함수
-      // 반환값은 배열형태로 넘겨받음
+      // filter 함수에 매개변수로 함수를 넣으면 그 함수는
+      // 배열의 각 요소에 대해 호출된다 그리고 함수의 반환
+      // 값이 true인 경우만 결과 배열에 포함된다
+      // filter 함수에 매개변수로 넣은 함수의 매개변수에는
+      // 첫번째 인덱스부터 마지막 인덱스까지 배열의 각 요소가 대입된다
       // filter, map, reduce : 고차함수
-      // 실행되면 3번 반복하면서 매개변수 s는 obj.sjs[0~2]이 됨
-      sj = obj.sjs.filter(function (s) {
-        document.write(s.name, " ", "filter", "<br>");
-        if (s.name == "지현") return s;
-      });
+      // sj = obj.sjs.filter(function (s) {
+      //   if (s.name == "지현") return s;
+      // });
 
-      // sj = obj.sjs.filter(s => (s.name == '지현'));
+
+      // 위의 코드를 더 간단히 한 것임
+      // 이 코드의 s => s.name == '지현'은 화살표 함수이다
+      // 화살표함수의 기본 생성 방법은
+      // let 함수명 = (매개변수) => {실행될 코드} 이지만
+      // 이렇게 짧게도 생성할 수 있다
+      // 원래 하던 방식대로 했을때 같은 의미의 함수를 생성하는 코드는
+      // let 함수명 = (s) => {s.name == '지현'} 이다
+      // 아래 코드를 이해하기위해 맨 아래의 filter 함수의 원리를 보자
+      // filter 함수의 특징은 filter 함수의 매개변수로 들어가있는
+      // 함수에 반환문이 없어도 조건문의 결과가 true일때의
+      // 배열 요소 값을 배열로 반환받는다는 것이다
+      sj = obj.sjs.filter(s => s.name == '지현');
 
       document.write("지현", " ", sj[0].grd, "<br>");
+
+
+      // filter 함수는 배열 요소들을 차례대로 가져와서 조건에 대입하고
+      // 그 조건에 맞는 요소들을 결과값으로 받아서 새로운 배열을 만들때 사용함
+      // filter 함수를 사용해서 5이상의 값만 추출해 result라는 변수에 담아보자
+      let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      // filter 함수의 반환값은 배열이라서 result에 배열로 저장됨
+      let result = array.filter(value => value >= 5);
+      document.write(result);
+      // value => value >= 5 가 화살표 함수라는 것은 위에서 설명했다
     </script>
   </body>
 </html>
