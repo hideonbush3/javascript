@@ -9,7 +9,7 @@
     <hr />
     <h2>개요</h2>
     <p>
-      웹브라우져의 여러 구성요소들을 객체형태로 구현해서 자바스크립트로 제어할
+      웹브라우저의 여러 구성요소들을 객체형태로 구현해서 자바스크립트로 제어할
       수 있도록 만들어 놓은 것
     </p>
     <p>BOM은 W3C의 표준모델은 아님</p>
@@ -17,6 +17,7 @@
       따라서, 브라우저 제조사마다 구현방식이 달라 특정부분은 서로 호환되지 않는
       것도 존재
     </p>
+    <hr>
 
     <h2>window객체</h2>
     <p>웹브라우저의 창을 의미하는 객체</p>
@@ -24,13 +25,15 @@
 
     <script>
       // confirm : 예, 아니오 중 하나를 선택하는 창 표시
+      // '예'를 선택하면 true반환
       // alert : 간단한 경고창 출력
       // prompt : 사용자로부터 값을 입력받는 창 표시
 
-      //let yesno = confirm('자바스크립트를 좋아하니?');
+      let yesno = confirm('자바스크립트를 좋아하니?');
       // let yesno = window.confirm("자바스크립트를 좋아하니?");
       //if (yesno == true)
-      // if (yesno) document.write("어맛!", "<br>");
+      if (yesno) document.write("자바스크립트 좋아하지마", "<br>",
+      '그게 뭔데..', "<br>");
     </script>
 
     <script>
@@ -113,7 +116,7 @@
         mywin.moveTo(500, 500);
       };
       let rszWin = () => {
-        mywin.resizeTo(1200, 1000);
+        mywin.resizeTo(600, 600);
       };
     </script>
     <hr />
@@ -148,7 +151,7 @@
 
     // 2. setInterval(...) 코드안의 내용이 무슨 얘기냐면
     // setInterval 함수를 호출하는 방법은 원래
-    // setInterval (함수, 반복주기); 이다
+    // setInterval (함수명, 반복주기); 이다
     // setInterval의 ()안에서 resizeWin와 moveWin함수를 호출하는
     // 화살표 함수를 만든 것임
     // 요약하자면,
@@ -177,7 +180,7 @@
 
   <script>
     document.write(screen.width, '/', screen.height, '<br>'); // 현재 모니터 해상도
-    document.write(screen.availWidth, '/', screen.availHeight, '<br>'); // 지원가능한 해상도
+    document.write(screen.availWidth, '/', screen.availHeight, '<br>'); // 사용가능한 해상도
   </script>
   <hr>
 
