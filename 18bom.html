@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자바스크립트 브라우저 객체</title>
+  </head>
+  <body>
+    <h1>자바스크립트 브라우저 객체</h1>
+    <hr />
+    <h2>개요</h2>
+    <p>
+      웹브라우져의 여러 구성요소들을 객체형태로 구현해서 자바스크립트로 제어할
+      수 있도록 만들어 놓은 것
+    </p>
+    <p>BOM은 W3C의 표준모델은 아님</p>
+    <p>
+      따라서, 브라우저 제조사마다 구현방식이 달라 특정부분은 서로 호환되지 않는
+      것도 존재
+    </p>
+
+    <h2>window객체</h2>
+    <p>웹브라우저의 창을 의미하는 객체</p>
+    <p>innerHeight, innerWidth : 브라우져의 뷰포트 크기를 의미하는 속성</p>
+
+    <script>
+      // confirm : 예, 아니오 중 하나를 선택하는 창 표시
+      // alert : 간단한 경고창 출력
+      // prompt : 사용자로부터 값을 입력받는 창 표시
+
+      //let yesno = confirm('자바스크립트를 좋아하니?');
+      // let yesno = window.confirm("자바스크립트를 좋아하니?");
+      //if (yesno == true)
+      // if (yesno) document.write("어맛!", "<br>");
+    </script>
+
+    <script>
+      // window.innerWidth : 창 테두리 제외 뷰포트 크기
+      // document.documentElement.clientWidth  : innerWidth에서
+      // 스크롤바를 제외한 뷰포트 크기
+
+      let iw =
+        window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth;
+      let ih =
+        window.innerHeight ||
+        document.documentElement.clientHeight ||
+        document.body.clientHeight;
+
+      document.write("", iw, "/", ih, "<br>");
+    </script>
+    <hr />
+
+    <h2>문서 열기/닫기</h2>
+    <p>
+      window객체의 open함수를 이용해서 지정한 문서를 새창이나 새로운 탭에 띄울수
+      있음
+    </p>
+    <p>
+      또한, window객체의 close함수를 이용하면 띄워진 창이나 탭을 닫을 수 있음
+    </p>
+    <p>
+      창 생성시 창에 관한 속성(크기,너비등)을 설정하면 탭으로 생성되지 않고
+      독립적인 창으로 생성됨
+    </p>
+    <p>
+      주 브라우저의 url과 새 창의 url이 동일하지 않을 경우 CSRF 와 CORS 보안
+      위배 발생 가능성이 존재! (동일 출처 위반)
+    </p>
+
+    <div>
+      <button type="button" onclick="makeWin()">새창띄우기</button>
+      <button type="button" onclick="rmvWin()">띄운창닫기</button>
+    </div>
+    <script>
+      let mywin = null;
+      let makeWin = () => {
+        // 새창 띄우기
+        // window.open(문서이름)
+        // mywin = window.open('01hellojs.html');
+        mywin = window.open("http://www.google.com");
+      };
+
+      let rmvWin = () => {
+        // 띄운창 닫기
+        mywin.close();
+      };
+    </script>
+    <hr />
+
+    <h2>창 조작</h2>
+    <p>resizeTo : 생성한 창의 크기 변경</p>
+    <p>moveTo : 생성한 창의 위치 변경</p>
+
+    <div>
+      <button type="button" onclick="makeWin2()">새창띄우기</button>
+      <button type="button" onclick="movWin()">창 이동시키기</button>
+      <button type="button" onclick="rszWin()">창 크기바꾸기</button>
+    </div>
+
+    <script>
+      // window.open(문서명, null, 이름, 너비, 높이, 옵션)
+      // moveTo(x좌표, y좌표)
+      // resizeTo(너비, 높이)
+      let makeWin2 = () => {
+        mywin = window.open(
+          "about:blank",
+          null,
+          "popup, width=300, height=300"
+        );
+      };
+      let movWin = () => {
+        mywin.moveTo(500, 500);
+      };
+      let rszWin = () => {
+        mywin.resizeTo(1200, 1000);
+      };
+    </script>
+    <hr />
+
+    <h2>랜덤 창 띄우기</h2>
+    <div>
+      <button type="button" onclick="startRndWin()">랜덤 창 시작</button>
+      <button type="button" onclick="stopRndWin()">랜덤 창 중지</button>
+    </div>
+  </body>
+
+  <script>
+    // 새창을 하나 띄운 뒤, 임의의 위치로 창을 옮기고
+    // 임의의 수치로 창 크기를 변경하는 함수
+    let intv = null;
+
+    // 임의의 위치로 창을 옮김
+    let moveWin = () => {
+      let x = Math.floor(Math.random() * 1920);
+      let y = Math.floor(Math.random() * 1080);
+
+      mywin.moveTo(x, y);
+    };
+
+    // 임의의 수치로 창 크기 변경
+    let resizeWin = () => {
+      let w = Math.floor(Math.random() * 500);
+      let h = Math.floor(Math.random() * 500);
+
+      mywin.resizeTo(w, h);
+    };
+
+    let startRndWin = () => {
+      makeWin2();
+      intv = setInterval(() => {
+        resizeWin(), moveWin();
+      }, 1500);
+    };
+
+    let stopRndWin = () => {
+      clearInterval(intv);
+      mywin.close();
+    };
+  </script>
+  <hr>
+
+<h2>screen</h2>
+  <p>사용자 디스플레이에 관한 정보를 다루는 객체</p>
+
+  <p>width, height : 사용자 디스플레이의 실제 해상도 크기</p>
+  <p>availWidth, availHeight : 사용자 디스플레이의 실제 해상도 중
+    사용자가 사용가능한 화면영역</p>
+
+  <script>
+    document.write(screen.width, '/', screen.height, '<br>'); // 현재 모니터 해상도
+    document.write(screen.availWidth, '/', screen.availHeight, '<br>'); // 지원가능한 해상도
+  </script>
+  <hr>
+
+<h2>화면 정중앙에 새창 띄우기</h2>
+<div>
+  <button type="button" onclick="centerWin()">정중앙에 새창 띄우기</button>
+</div>
+  <script>
+    let centerWin = () => {
+      // 창크기 : 300 X 300
+      let sx = screen.width;
+      let sy = screen.height;
+
+      let cx = sx / 2 - 150;
+      let cy = sy / 2 - 150;
+
+      makeWin2();
+      mywin.moveTo(cx, cy);
+    };
+  </script>
+  <hr>
+
+<h2>location</h2>
+<p>현재 브라우저에 표시된 문서의 url을 변경하거나
+url에 대한 정보를 얻을 수 있음</p>
+
+  <script>
+    let url = location.href;  // 현재 문서의 url을 가져옴
+
+    document.write(url, '<br>');
+    document.write(location.hostname, '<br>');  // 서버명
+    document.write(location.pathname, '<br>');  // 경로명
+    document.write(location.search, '<br>');  // 질의문자열
+  </script>
+
+  <div>
+    <button type="button" onclick="go2gle()">구글로 이동</button>
+    <button type="button" onclick="go2any()">오늘의 추천사이트</button>
+  </div>
+
+  <script>
+    go2gle = () => {
+      location.href = 'http://www.google.com';
+    };
+
+    go2any = () => {
+      const luckys = ['naver.com', 'youtube.com/',
+      'danawa.co.kr', 'openai.com/blog/chatgpt/', 'roadmap.sh/'];
+
+    let idx = Math.floor(Math.random() * 5);
+    location.href = 'http://' + luckys[idx];
+    };
+  </script>
+  <hr>
+
+<h2>navigator</h2>
+<p>접속중인 클라이언트의 다양한 정보를 알아낼 수 있음</p>
+
+  <script>
+    let appname = navigator.appName;
+    let codename = navigator.appCodeName;
+    let appver = navigator.appVersion;
+    let ua = navigator.userAgent; // 강추!
+    let pf = navigator.platform;
+
+    document.write(appname, '<br>', codename, '<br>', appver, '<br>',
+    ua, '<br>', pf, '<br>');
+  </script>
+</html>
