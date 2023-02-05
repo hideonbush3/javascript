@@ -186,8 +186,8 @@
       intro.addEventListener("keyup", () => {
         let chcnt = intro.value.length;
         chrcnt.style.color = "black";
-        chrcnt.textContent = chcnt + 1;
-        if (chcnt >= 100) chrcnt.style.color = "red";
+        chrcnt.textContent = chcnt
+        if (chcnt > 100) chrcnt.style.color = "red";
       });
     </script>
     <hr />
@@ -204,11 +204,9 @@
       <div id="warn3" class="warn"></div>
 
       <div>
-        성별(gender) 남<input type="radio" name="gender" value="m" /> 여<input
-          type="radio"
-          name="gender"
-          value="f"
-        />
+        성별(gender)
+        남<input type="radio" name="gender" value="m" />
+        여<input type="radio" name="gender" value="f" />
       </div>
       <div id="warn4" class="warn"></div>
 
@@ -237,25 +235,22 @@
           warn1.textContent = '아이디를 입력하세요';
           uid.focus();
         }
-        if (pwd.value == '') {
+        else if (pwd.value == '') {
           warn2.textContent = '비밀번호를 입력하세요';
           pwd.focus();
         }
-        if (name.value == '') {
+        else if (name.value == '') {
           warn3.textContent = '이름을 입력하세요';
           name.focus();
         }
-        if (!gdr[0].checked && !gdr[1].checked) {
+        else if (!gdr[0].checked && !gdr[1].checked) {
           warn4.textContent = '성별을 체크해주세요';
         } else {
           alert('입력한 내용을 서버로 전송합니다')
         }
         // console.log(gdr[0].checked, gdr[1].checked);
       }
-
       joinbtn.addEventListener('click', checkjoinfrm);
-
-
     </script>
   </body>
 </html>
