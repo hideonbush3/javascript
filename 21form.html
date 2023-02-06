@@ -84,11 +84,10 @@
 
     <h2>form 다루기 - submit</h2>
     <p>
-      submit 버튼에 대한 이벤트 처리는<br />
+      type="submit" 버튼에 대한 이벤트 처리는<br />
       1. form태그에 onsubmit 속성 정의<br />
       2. return 폼체크함수호출로 이벤트핸들러 등록함<br />
-      3. button의 type을 submit으로 설정 <br />
-      4. 폼체크가 하나라도 실패하면 return false로, 성공하면 retrun true로
+      3. 폼체크가 하나라도 실패하면 return false로, 성공하면 retrun true로
       submit이 작동하도록 함<br />
       즉, 이벤트를 중지하려면 retrun false, event.preventDefault() 등의 코드
       사용
@@ -139,9 +138,6 @@
         } else if (frm2.pwd.value == "") {
           warn6.textContent = "비번입력해라";
           e.preventDefault(); // 이 조건문에 부합해서 실행되면 submit되는걸 막음
-        } else if (frm2.repwd.value == "") {
-          warn6.textContent = "비번입력해라";
-          e.preventDefault();
         } else if (frm2.name.value == "") {
           warn7.textContent = "이름입력해라";
           e.preventDefault();
@@ -160,7 +156,6 @@
           return true;
         }
       };
-
       let join2btn = document.querySelector("#join2btn");
       join2btn.addEventListener("click", (e) => {
         // e : IoC(Inversion of Control, 제어의 역전)
