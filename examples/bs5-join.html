@@ -1,10 +1,166 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>bootstrap5 회원가입</title>
+    <link href="../css/bs5/bootstrap.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <form class="needs-validation" novalidate>
+      <div class="row mb-2">
+        <label for="name" class="form-label col-md-2">이름</label>
+        <div class="col-md-3">
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            id="name"
+            required
+          />
+        </div>
+      </div>
 
-</body>
+      <div class="row mb-2">
+        <label for="jumin1" class="form-label col-md-2">주민등록번호</label>
+        <div class="col-md-2">
+          <input
+            type="text"
+            class="form-control"
+            name="jumin1"
+            id="jumin1"
+            required
+          />
+        </div>
+        <div class="col-md-1">
+          <span> - </span>
+        </div>
+        <div class="col-md-2">
+          <input
+            type="text"
+            class="form-control"
+            name="jumin2"
+            required
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="id" class="form-label">아이디</label>
+        <input type="text" class="form-control" name="id" id="id" required />
+      </div>
+
+      <div>
+        <label for="pwd" class="form-label">비밀번호</label>
+        <input
+          type="password"
+          class="form-control"
+          name="pwd"
+          id="pwd"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="repwd" class="form-label">비밀번호 확인</label>
+        <input
+          type="text"
+          class="form-control"
+          name="repwd"
+          id="repwd"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="postno" class="form-label">우편번호</label>
+        <input
+          type="text"
+          class="form-control"
+          name="postno"
+          id="postno"
+          required
+        />
+        <button type="button" class="btn btn-primary">우편번호 찾기</button>
+      </div>
+
+      <div>
+        <label for="addr" class="form-label">주소</label>
+        <input
+          type="text"
+          class="form-control"
+          name="addr"
+          id="addr"
+          required
+        />
+        <input type="text" class="form-control" name="addr2" required />
+      </div>
+
+      <div>
+        <label for="email" class="form-label">전자우편 주소</label>
+        <input
+          type="text"
+          class="form-control"
+          name="email"
+          id="email"
+          required
+        />
+        <span>@</span>
+        <input type="text" class="form-control" name="email2" required />
+        <select name="email3" id="email3" class="form-select">
+          <option value="none">선택하세요</option>
+          <option value="google">google.com</option>
+          <option value="naver">naver.com</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="tel" class="form-label">개인 연락처</label>
+        <select name="tel" id="tel" class="form-select" required>
+          <option value="none">국번</option>
+          <option value="seoul">02</option>
+          <option value="busan">051</option>
+        </select>
+        <input
+          type="text"
+          class="form-control"
+          name="tel2"
+          id="tel2"
+          required
+        />
+        <input
+          type="text"
+          class="form-control"
+          name="tel3"
+          id="tel3"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="hack">자동 가입방지</label>
+        <img src="../img/captcha.png" />
+        <input
+          type="text"
+          name="hack"
+          id="hack"
+          class="form-control"
+          required
+        />
+        <button type="button" class="btn btn-success">다른 capcha 보기</button>
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-primary">입력완료</button>
+        <button type="button" class="btn btn-danger">입력완료</button>
+      </div>
+    </form>
+
+    <script src="../examples/bs5-join.js"></script>
+    <script src="../js/bs5/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

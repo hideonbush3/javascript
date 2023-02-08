@@ -32,11 +32,11 @@
 
     <h2>12 grid system</h2>
     <div class="container" style="border: 1px solid red">
-      <p>고정너비, 가운데 정렬 컨테이너</p>
+      <p>고정너비, 가운데 정렬 컨테이너 container</p>
     </div>
 
     <div class="container-fluid" style="border: 1px solid blue">
-      <p>100% 너비 유동 컨테이너</p>
+      <p>100% 너비 유동 컨테이너 container-fluid</p>
     </div>
     <hr />
 
@@ -63,7 +63,7 @@
         576px이상부터 레이아웃 유지
       </p>
       <div class="row">
-        <div class="col-sm-1 bg">1</div>
+        <div class="col-sm-1 bg">sm1</div>
         <div class="col-sm-1 bg">2</div>
         <div class="col-sm-1 bg">3</div>
         <div class="col-sm-1 bg">4</div>
@@ -82,7 +82,7 @@
         768px이상부터 레이아웃 유지
       </p>
       <div class="row">
-        <div class="col-md-1 bg">1</div>
+        <div class="col-md-1 bg">md1</div>
         <div class="col-md-1 bg">2</div>
         <div class="col-md-1 bg">3</div>
         <div class="col-md-1 bg">4</div>
@@ -101,7 +101,7 @@
         992px이상부터 레이아웃 유지
       </p>
       <div class="row">
-        <div class="col-lg-1 bg">1</div>
+        <div class="col-lg-1 bg">lg1</div>
         <div class="col-lg-1 bg">2</div>
         <div class="col-lg-1 bg">3</div>
         <div class="col-lg-1 bg">4</div>
@@ -120,7 +120,7 @@
         1200px이상부터 레이아웃 유지
       </p>
       <div class="row">
-        <div class="col-xl-1 bg">1</div>
+        <div class="col-xl-1 bg">xl1</div>
         <div class="col-xl-1 bg">2</div>
         <div class="col-xl-1 bg">3</div>
         <div class="col-xl-1 bg">4</div>
@@ -150,6 +150,7 @@
         <div class="col-md bg2">3</div>
       </div>
     </div>
+
     <hr />
 
     <h2>레이아웃1</h2>
@@ -158,34 +159,33 @@
         <div class="col-md" style="height: 100px; background: yellow">상단</div>
       </header>
       <main class="row">
-        <div class="col-md" style="height: 500px; background: orange">메인</div>
+        <div class="col-md" style="height: 400px; background: orange">메인</div>
       </main>
       <footer class="row">
-        <div class="col-md" style="height: 100px; background: #f55c5c">
-          메인
-        </div>
+        <div class="col-md" style="height: 100px; background: red">하단</div>
       </footer>
     </div>
+
     <hr />
 
     <h2>레이아웃2</h2>
     <div class="container">
       <header class="row">
-        <div class="col-md" style="height: 100px; background: cornflowerblue">
+        <div class="col-md" style="height: 100px; background: #f6aeae">
           상단
         </div>
       </header>
       <main class="row">
-        <aside class="col-md-3" style="height: 500px; background: blueviolet">
+        <aside class="col-md-3" style="height: 400px; background: #f5f5b7">
           메인메뉴
         </aside>
-        <section class="col-md" style="height: 500px; background: #97b8ee">
+        <section class="col-md" style="height: 400px; background: #c3f8bb">
           메인영역
         </section>
       </main>
       <footer class="row">
-        <div class="col-md" style="height: 100px; background: #c084ec">
-          메인
+        <div class="col-md" style="height: 100px; background: #d2a8f1">
+          하단
         </div>
       </footer>
     </div>
@@ -209,45 +209,48 @@
     <hr />
 
     <h2>그리드 정렬하기</h2>
-    <div class="container">
+    <div class="container text-center">
       <div class="row">
-        <div class="col-md-4 bg">1/2</div>
-        <div class="col-md-4 bg">2/2</div>
+        <div class="col-md-4 bg">4/12</div>
+        <div class="col-md-4 bg">4/12</div>
       </div>
+
       <div class="row justify-content-center">
-        <div class="col-md-4 bg">1/2</div>
-        <div class="col-md-4 bg">2/2</div>
+        <div class="col-md-4 bg">4/12</div>
+        <div class="col-md-4 bg">4/12</div>
       </div>
+
       <div class="row justify-content-around">
-        <div class="col-md-4 bg">1/2</div>
-        <div class="col-md-4 bg">2/2</div>
+        <div class="col-md-4 bg">4/12</div>
+        <div class="col-md-4 bg">4/12</div>
       </div>
+
       <div class="row justify-content-between">
-        <div class="col-md-4 bg">1/2</div>
-        <div class="col-md-4 bg">2/2</div>
+        <div class="col-md-4 bg">4/12</div>
+        <div class="col-md-4 bg">4/12</div>
       </div>
     </div>
     <hr />
 
     <h2>그리드 사이 간격 띄우기 offsetting</h2>
-    <div class="container">
+    <div class="container text-center">
       <div class="row">
-        <div class="col-md-4 bg">1/2</div>
-        <div class="col-md-4 bg">2/2</div>
+        <div class="col-md-4 bg">4/12</div>
+        <div class="col-md-4 bg">4/12</div>
       </div>
 
       <div class="row">
-        <div class="col-md-4 bg">1/2</div>
-        <div class="col-md-4 offset-md-4 bg">2/2</div>
+        <div class="col-md-4 bg">4/12</div>
+        <div class="col-md-4 offset-md-4 bg">4/12</div>
       </div>
 
       <div class="row">
-        <div class="col-md-3 offset-md-3 bg">1/2</div>
-        <div class="col-md-3 offset-md-3 bg">2/2</div>
+        <div class="col-md-3 offset-md-3 bg">3/12</div>
+        <div class="col-md-3 offset-md-3 bg">3/12</div>
       </div>
 
       <div class="row">
-        <div class="col-md-10 offset-md-1 bg">1/2</div>
+        <div class="col-md-10 offset-md-1 bg">10/12</div>
       </div>
     </div>
   </body>

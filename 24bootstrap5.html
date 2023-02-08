@@ -45,16 +45,16 @@
     <h2>Hello, Bootstrap5!! <span class="badge text-bg-danger">New</span></h2>
     <hr />
 
-    <form>
+    <form class="was-validated" novalidate>
       <div class="row">
         <label for="uid" class="col-1">아이디</label>
         <div class="col-3">
-          <input type="text" id="uid" name="uid" class="form-control col-3" />
+          <input type="text" id="uid" name="uid" class="form-control col-3" required/>
         </div>
       </div>
       <div class="row">
         <div class="col-3 text-center">
-          <button type="button" class="btn btn-primary col-3">로그인</button>
+          <button type="submit" class="btn btn-primary col-3">로그인</button>
         </div>
       </div>
     </form>

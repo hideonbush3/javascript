@@ -25,10 +25,12 @@
         <label for="pwd" class="form-label">비밀번호</label>
         <input type="password" id="pwd" name="pwd" class="form-control" />
       </div>
+
       <div class="mb-3">
         <input type="checkbox" id="isLogin" class="form-check-input" />
         <label for="isLogin" class="form-check-label">로그인 기억하기</label>
       </div>
+
       <div class="mb-3">
         <button type="button" class="btn btn-danger">로그인</button>
         <button type="button" class="btn btn-warning">
@@ -63,8 +65,8 @@
       <div class="row">
         <div>
           <label class="col-md-2"></label>
-          <button type="button" class="btn btn-danger">로그인</button>
-          <button type="button" class="btn btn-warning">
+          <button type="button" class="btn btn-primary">로그인</button>
+          <button type="button" class="btn btn-primary">
             아이디/비밀번호 찾기
           </button>
         </div>
@@ -165,7 +167,7 @@
 
       <div class="row">
         <label for="hobby" class="form-label col-md-2">취미</label>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <input
             type="checkbox"
             class="form-check-input"
@@ -220,9 +222,15 @@
 
     <form action="">
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="fuid" placeholder="ID" />
+        <input
+          type="text"
+          class="form-control"
+          id="fuid"
+          placeholder="아뒤"
+        />
         <label for="fuid">아이디</label>
       </div>
+
       <div class="form-floating">
         <input
           type="text"
@@ -230,7 +238,7 @@
           id="fpwd"
           placeholder="패스워드"
         />
-        <label for="fpwd">비번</label>
+        <label for="fpwd">비밀번호</label>
       </div>
     </form>
     <hr />
@@ -264,8 +272,8 @@
       작동중지해 둠
     </p>
     <p>
-      그런 다음 needs-validation 라는 클래스 선택자에 폼 유효성 검사를 수행하는
-      함수를 이벤트로 등록해 둠
+      그런 다음 needs-validation 라는 클래스 선택자(임의로 지은 이름이고 선택자로서의
+      역할 말고는 원래 아무 동작도 안함)에 폼 유효성 검사를 수행하는 함수를 이벤트로 등록해 둠
     </p>
     <form class="row needs-validation" novalidate>
       <div class="col-md-4">
@@ -279,6 +287,7 @@
         />
       </div>
       <!-- 아이디 -->
+
       <div class="col-md-4">
         <label for="passwd" class="form-label">비밀번호</label>
         <input
@@ -290,6 +299,7 @@
         />
       </div>
       <!-- 비밀번호 -->
+
       <div class="col-md-4">
         <label for="name" class="form-label">이름</label>
         <input
@@ -301,6 +311,7 @@
         />
       </div>
       <!-- 이름 -->
+
       <div class="col-md-12">
         <input
           type="checkbox"
@@ -315,6 +326,7 @@
         <div class="invalid-feedback">이용약관에 동의하세요</div>
       </div>
       <!-- 이용약관 -->
+
       <div class="col-md-12">
         <button type="submit" class="btn btn-primary">Join</button>
       </div>
@@ -327,6 +339,8 @@
       // let main = () => { alert('hello');}
       // main();
 
+      // submit 버튼을 눌렀는데 required를 걸어놓은 input 태그들에 값이 입력돼있지
+      // 않을 경우 submit 이벤트를 중지하기 위한 이벤트 핸들러를 만든다
       (() => {
         "use strict";
 
@@ -335,14 +349,13 @@
         form.addEventListener(
           "submit",
           (e) => {
-            // console.log(form.checkValidity());
-            if (!form.checkValidity()) {
-              e.preventDefault();
-              e.stopPropagation();
+            form.classList.add("was-validated");  // 폼의 클래스에 was-validated 클래스 추가함 얘의 역할은 required를 걸어놓은 input 태그들에 값을 입력했는지 여부를 보여줌
+            console.log(form.checkValidity());  // 폼 유효성을 검사하고 유효하지않으면 false 반환(그냥 반환값 확인용)
+            if (!form.checkValidity()) {  // 폼이 유효하지 않으면: checkValidity() 반환값이 false이면
+              e.preventDefault(); // submit 이벤트 중지
+              e.stopPropagation();  // 버블링 방지: 부모요소로 이벤트가 퍼지는걸 차단
             }
-            form.classList.add("was-validated");
-          },
-          false
+          }, false // , false는 기본값이라 생략 가능하며 addEventListener() 함수의 마지막 인자로 사용되고 이벤트의 기본 동작을 취소할지 여부를 지정(true이면 동작 취소)
         ); // addEventListener
       })();
     </script>
