@@ -330,22 +330,20 @@
       (() => {
         "use strict";
 
-        const forms = document.querySelectorAll(".needs-validation");
+        const form = document.querySelector(".needs-validation");
 
-        Array.from(forms).forEach((form) => {
-          form.addEventListener(
-            "submit",
-            (e) => {
-              // console.log(form.checkValidity());
-              if (!form.checkValidity()) {
-                e.preventDefault();
-                e.stopPropagation();
-              }
-              form.classList.add("was-validated");
-            },
-            false
-          ); // addEventListener
-        }); // forEach
+        form.addEventListener(
+          "submit",
+          (e) => {
+            // console.log(form.checkValidity());
+            if (!form.checkValidity()) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+            form.classList.add("was-validated");
+          },
+          false
+        ); // addEventListener
       })();
     </script>
     <script src="js/bs5/bootstrap.bundle.min.js"></script>
