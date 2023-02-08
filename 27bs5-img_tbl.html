@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>부트스트랩5 - 이미지와 테이블</title>
+  <link href="css/bs5/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<h1>부트스트랩5 - 이미지와 테이블</h1>
+<hr>
+
+<h2>반응형 이미지</h2>
+<p>이미지에 img-fluid 클래스를 지정하면
+너비최대, 높이자동, 블럭요소 속성이 부여됨</p>
+
+<div>
+  <div><img src="img/domtree.png"></div>
+  <div><img src="img/domtree.png" class="img-fluid"></div>
+</div>
+<hr>
+
+<h2>이미지 스타일</h2>
+<p>이미지에 액자스타일의 테두리를 표시하고 싶다면
+img-thumbnail 클래스를 사용함</p>
+<div>
+  <div><img src="img/lovemincho.jpg"></div>
+  <div><img src="img/lovemincho.jpg" class="img-thumbnail"></div>
+</div>
+<hr>
+
+<h2>이미지 한줄 정렬</h2>
+<p>float-end, float-start 클래스를 이용하면
+이미지들을 수평정렬할 수 있음</p>
+
+<div>
+  <img src="img/curly.png" class="rouded float-end">
+  <img src="img/Marshal.png" class="float-start">
+  <p class="clearfix"></p>
+</div>
+<hr>
+
+<h2 class="clearfix">테이블</h2>
+<table class="table">
+  <thead>
+  <tr><th>이름</th><th>국어</th>
+    <th>영어</th><th>수학</th></tr>
+  </thead>
+  <tbody>
+  <tr><td>수지</td><td>98</td>
+    <td>97</td><td>99</td></tr>
+  <tr><td>혜교</td><td>55</td>
+    <td>77</td><td>66</td></tr>
+  <tr><td>지현</td><td>78</td>
+    <td>32</td><td>45</td></tr>
+  </tbody>
+</table>
+
+<table class="table table-dark">
+  <thead>
+  <tr><th>이름</th><th>국어</th>
+    <th>영어</th><th>수학</th></tr>
+  </thead>
+  <tbody>
+  <tr><td>수지</td><td>98</td>
+    <td>97</td><td>99</td></tr>
+  <tr><td>혜교</td><td>55</td>
+    <td>77</td><td>66</td></tr>
+  <tr><td>지현</td><td>78</td>
+    <td>32</td><td>45</td></tr>
+  </tbody>
+</table>
+
+<p>table-striped 클래스를 이용하면 얼룩말 무늬 테이블을 나타낼 수 있음</p>
+
+<table class="table table-striped">
+  <thead>
+  <tr><th>이름</th><th>국어</th>
+    <th>영어</th><th>수학</th></tr>
+  </thead>
+  <tbody>
+  <tr><td>수지</td><td>98</td>
+    <td>97</td><td>99</td></tr>
+  <tr><td>혜교</td><td>55</td>
+    <td>77</td><td>66</td></tr>
+  <tr><td>지현</td><td>78</td>
+    <td>32</td><td>45</td></tr>
+  </tbody>
+</table>
+
+<table class="table table-dark table-striped">
+  <thead>
+  <tr><th>이름</th><th>국어</th>
+    <th>영어</th><th>수학</th></tr>
+  </thead>
+  <tbody>
+  <tr><td>수지</td><td>98</td>
+    <td>97</td><td>99</td></tr>
+  <tr><td>혜교</td><td>55</td>
+    <td>77</td><td>66</td></tr>
+  <tr><td>지현</td><td>78</td>
+    <td>32</td><td>45</td></tr>
+  </tbody>
+</table>
+
+<p>table-bordered 클래스를 이용하면 테두리가 있는
+테이블을 나타낼 수 있음</p>
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr><th>이름</th><th>국어</th>
+    <th>영어</th><th>수학</th></tr>
+  </thead>
+  <tbody>
+  <tr><td>수지</td><td>98</td>
+    <td>97</td><td>99</td></tr>
+  <tr><td>혜교</td><td>55</td>
+    <td>77</td><td>66</td></tr>
+  <tr><td>지현</td><td>78</td>
+    <td>32</td><td>45</td></tr>
+  </tbody>
+</table>
+
+<p>table-hover 클래스를 이용하면 특정 행에
+마우스 커서를 올렸을때 배경색이 다르게 표시되는 테이블을
+나타낼 수 있음</p>
+
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr><th>이름</th><th>국어</th>
+    <th>영어</th><th>수학</th></tr>
+  </thead>
+  <tbody>
+  <tr><td>수지</td><td>98</td>
+    <td>97</td><td>99</td></tr>
+  <tr><td>혜교</td><td>55</td>
+    <td>77</td><td>66</td></tr>
+  <tr><td>지현</td><td>78</td>
+    <td>32</td><td>45</td></tr>
+  </tbody>
+</table>
+<hr>
+
+<h2>테이블의 행/열에 색상 표현하기</h2>
+<p>
+  table-active, table-primary, table-secondary, table-success, table-danger,
+  table-warning, table-info, table-light, table-dark등의 클래스로 텍스트에
+  맥락있는 색상을 부여할 수 있음
+</p>
+
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr><th>이름</th><th>국어</th>
+    <th>영어</th><th>수학</th></tr>
+  </thead>
+  <tbody>
+  <tr class="table-success"><td>수지</td><td>98</td>
+    <td>97</td><td>99</td></tr>
+  <tr class="table-warning"><td>혜교</td><td>55</td>
+    <td>77</td><td>66</td></tr>
+  <tr class="table-danger"><td>지현</td><td>78</td>
+    <td>32</td><td>45</td></tr>
+  </tbody>
+</table>
+
+
+</body>
+</html>
